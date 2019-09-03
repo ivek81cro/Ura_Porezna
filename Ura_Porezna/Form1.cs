@@ -617,7 +617,7 @@ namespace Ura_Porezna
                     }
                     else
                     {
-                        DateTime dt = DateTime.Parse(text[6]);
+                        DateTime dt = DateTime.Parse(text[2]);
                         text[6] = dt.ToString("yyyy-MM-dd");
                     }
                     dataGridView1.Rows.Add(text);

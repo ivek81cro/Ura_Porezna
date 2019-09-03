@@ -94,7 +94,7 @@ namespace Ura_Porezna
             catch
             {
                 MessageBox.Show("Datoteka je otvorena u drugom programu\n" +
-                    "(zatvori calc ili excel)");
+                    "(zatvori calc ili excel) ili \n proveri .csv da li su svi redovi kopirani");
                 return;
             }
 
