@@ -610,16 +610,10 @@ namespace Ura_Porezna
                 {
                     string[] text = line.Split(';', '\n');
                     if (text[0] == "Rbr" || text[0] == "") continue;
-                    if (text[4] == "*")
-                    {
-                        DateTime dt1 = DateTime.Parse(text[2]);
-                        text[6] = dt1.ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        DateTime dt = DateTime.Parse(text[2]);
-                        text[6] = dt.ToString("yyyy-MM-dd");
-                    }
+
+                    DateTime dt1 = DateTime.Parse(text[2]);
+                    text[6] = dt1.ToString("yyyy-MM-dd");
+
                     dataGridView1.Rows.Add(text);
                 }
             }
