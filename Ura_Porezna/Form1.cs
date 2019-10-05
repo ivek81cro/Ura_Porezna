@@ -608,6 +608,7 @@ namespace Ura_Porezna
                 "@Porezna_osn13, @Porezna_osn25, @Ukupni_pretporez, @por5, @por13, @por25, " +
                 "@br_primke, @storno, @odobr);";
             con.Open();
+            int rowsAffected = 0;
             try
             {
                 string[] lines = File.ReadAllLines(put);
@@ -641,14 +642,22 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@storno", text[5].ToString().Trim());
                     cmd.Parameters.AddWithValue("@odobr", text[37].ToString().Trim());
 
-                    cmd.ExecuteNonQuery();
+                    rowsAffected=cmd.ExecuteNonQuery();
                 }
             }
             catch
             {
-                MessageBox.Show("Datoteka je otvorena u drugom programu\n" +
-                    "(zatvori calc ili excel)");
-                return;
+                if (rowsAffected == 0)
+                {
+                    MessageBox.Show("Datoteka je otvorena u drugom programu\n" +
+                        "(zatvori calc ili excel) ");
+                    return;
+                }
+                else 
+                {
+                    MessageBox.Show("Provjeri valjanost dokumenta za import. ");
+                    return;
+                }
             }
             con.Close();
 
