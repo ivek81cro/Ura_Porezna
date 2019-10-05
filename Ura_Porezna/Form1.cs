@@ -595,8 +595,8 @@ namespace Ura_Porezna
                 MessageBox.Show("Nije odabran file");
                 return;
             }
-            /*Poruka poruka = new Poruka();
-            poruka.Show();*/
+
+
             dataGridView1.ColumnCount = 45;
             for (int i = 0; i < 45; i++)
             {
@@ -674,7 +674,6 @@ namespace Ura_Porezna
                     MessageBox.Show(ex.Message);
                 }
             }
-            //poruka.Close();
             MessageBox.Show("Unešeno");
         }
         //kreiraj xml
