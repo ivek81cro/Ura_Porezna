@@ -89,21 +89,9 @@ namespace Ura_Porezna
             label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT Naziv_dobavljaca, ROUND(SUM(Iznos_s_porezom),2) as Iznos_s_porezom, " +
-                "(ROUND(SUM(Porezna_osn0),2)+ROUND(SUM(Porezna_osn5), 2)+ROUND(SUM(Porezna_osn13), 2)+" +
-                "ROUND(SUM(Porezna_osn25), 2)) As Ukupno_osnovica, " +
-                "ROUND(SUM(Porezna_osn0),2) as Osn0 ," +
-                "ROUND(SUM(Porezna_osn5), 2) as Osn5,ROUND(SUM(Porezna_osn13), 2) as Osn13, " +
-                "ROUND(SUM(Porezna_osn25), 2) as Osn25, ROUND(SUM(Ukupni_pretporez),2) as Ukupni_pretporez, " +
-                "ROUND(SUM(por5), 2) as PDV_5, ROUND(SUM(por13), 2) as PDV_13, ROUND(SUM(por25), 2) as PDV_25 " +
-                "FROM poreznaura.ura WHERE ((Iznos_s_porezom < 0 and storno=0 and br_primke=0) " +
-                "OR (Iznos_s_porezom > 0 and br_primke = 0 and storno <> 0) " +
-                "OR (Iznos_s_porezom > 0 and br_primke = 0 and storno = 0 and (Broj_racuna LIKE '%cs%' or Broj_racuna LIKE '%odo%')) " +
-                "OR (Iznos_s_porezom < 0 and br_primke = 0 and storno <> 0 and (Broj_racuna LIKE '%cs%' or Broj_racuna LIKE '%odo%')) " +
-                "OR (Iznos_s_porezom > 0 and storno=0 and br_primke=0 and Broj_racuna LIKE '%TER%')) " +
-                "AND Datum_racuna BETWEEN '" + datumOdBox + "' AND '" + datumDoBox +
-                "' GROUP BY Naziv_dobavljaca; ";
+            string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
+                "password=pass123;Allow User Variables=True";
+            string query = "CALL odobrenjaZbirno('"+datumOdBox+"','"+datumDoBox+"'); ";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -171,19 +159,9 @@ namespace Ura_Porezna
             label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT Rbr, Datum_racuna, Naziv_dobavljaca, Broj_racuna, " +
-                "ROUND(Iznos_s_porezom,2) as Iznos_s_porezom, " +
-                "(ROUND(Porezna_osn0, 2)+ROUND(Porezna_osn5, 2)+ROUND(Porezna_osn13, 2)+" +
-                "ROUND(Porezna_osn25, 2)) As Ukupno_osnovica, " +
-                "ROUND(Porezna_osn0, 2) as Osn0 ," +
-                "ROUND(Porezna_osn5, 2) as Osn5,ROUND(Porezna_osn13, 2) as Osn13, " +
-                "ROUND(Porezna_osn25, 2) as Osn25, ROUND(Ukupni_pretporez, 2) as Ukupni_pretporez, " +
-                "ROUND(por5, 2) as PDV_5, ROUND(por13, 2) as PDV_13, ROUND(por25, 2) as PDV_25, storno " +
-                "FROM poreznaura.ura WHERE br_primke=0 AND Broj_racuna NOT LIKE '%odo%' AND Broj_racuna NOT LIKE '%cs%' " +
-                "AND ((Iznos_s_porezom < 0 AND storno <> 0) OR (Iznos_s_porezom > 0 AND storno =0)) " +
-                "AND Datum_racuna BETWEEN '" + datumOdBox + "' AND '" + datumDoBox +
-                "' GROUP BY Rbr; ";
+            string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
+                "password=pass123;Allow User Variables=True";
+            string query = "CALL troskovi('"+datumOdBox+"','"+datumDoBox+"');";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -251,11 +229,7 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ura WHERE " +
-                "((Iznos_s_porezom < 0 and storno=0 and br_primke=0) " +
-                "OR (Iznos_s_porezom > 0 and storno <> and br_primke = 0) " +
-                "OR (Iznos_s_porezom > 0 and storno=0 and br_primke=0 and Broj_racuna LIKE '%TER%'))" +
-                "AND Datum_racuna BETWEEN '" + datumOdBox + "' AND '" + datumDoBox + "'; ";
+            string query = "CALL odobrenjaPojedinacno('" + datumOdBox + "','" + datumDoBox + "');";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -279,14 +253,10 @@ namespace Ura_Porezna
         {
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ura WHERE ((Iznos_s_porezom < 0 and br_primke=0 and storno=0) " +
-                "OR (Iznos_s_porezom > 0 and storno <> 0 and br_primke = 0) " +
-                "OR (Iznos_s_porezom > 0 and br_primke = 0 and storno = 0 and (Broj_racuna LIKE '%cs%' or Broj_racuna LIKE '%odo%')) " +
-                "OR (Iznos_s_porezom < 0 and br_primke = 0 and storno <> 0 and (Broj_racuna LIKE '%cs%' or Broj_racuna LIKE '%odo%')) " +
-                "OR (Iznos_s_porezom > 0 and storno=0 and br_primke=0 and Broj_racuna LIKE '%TER%')) " +
-                "AND Datum_racuna BETWEEN '" + datumOdBox + "' AND '" + datumDoBox + "' " + 
-                "AND Naziv_dobavljaca like '%" + txtDob.Text + "%'; ";
+            string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
+                "password=pass123;Allow User Variables=True";
+            string query = "CALL odobrenja('" + datumOdBox + "' , '" + datumDoBox + 
+                "' , '" + txtDob.Text + "');";
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -508,52 +478,52 @@ namespace Ura_Porezna
                 neoporezivo += Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
             }
             //ukIznos = ukIznos - neoporezivo;
-            label1.Text = "Ukupno: " + ukIznos.ToString();
+            label1.Text = "Ukupno: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             double osn5 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 osn5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString());
             }
-            label2.Text = "Osn.5%: " + osn5.ToString();
+            label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             double osn13 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 osn13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString());
             }
-            label3.Text = "Osn.13%: " + osn13.ToString();
+            label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             double osn25 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString());
             }
-            label4.Text = "Osn.25%: " + osn25.ToString();
+            label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double osnUk = osn5 + osn13 + osn25;
-            label5.Text = "Osn.Uk: " + osnUk.ToString();
+            label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por5 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 por5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString());
             }
-            label8.Text = "Por.5%: " + por5.ToString();
+            label8.Text = "Por.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por13 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 por13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[14].Value.ToString());
             }
-            label9.Text = "Por.13%: " + por13.ToString();
+            label9.Text = "Por.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por25 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[15].Value.ToString());
             }
-            label10.Text = "Por.25%: " + por25.ToString();
+            label10.Text = "Por.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             //obilazak gubitka u lipama radi strojnog racunanja
             //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
             double pretPorUk = por5 + por13 + por25;
-            label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString();
+            label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
             XNamespace ns2 = "http://e-porezna.porezna-uprava.hr/sheme/Metapodaci/v2-0";
