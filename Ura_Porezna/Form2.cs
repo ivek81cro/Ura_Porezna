@@ -98,19 +98,19 @@ namespace Ura_Porezna
                 return;
             }
 
+            string constring = "datasource=localhost;port=3306;username=root;password=pass123";
+            MySqlConnection con = new MySqlConnection(constring);
+            string query = "INSERT INTO poreznaura.ira (Rbr, datum_rn, br_rn, kupac, " +
+                "iznos_uk, osn0, osn5, pdv5, osn13, " +
+                "pdv13, osn25, pdv25, pdv_uk, storno_iz)" +
+                "VALUES (@Rbr, @Datum_racuna, @Broj_racuna, @Kupac, @Iznos, " +
+                "@Osn0, @Osn5, @Pdv5, @Osn13, @Pdv13, " +
+                "@Osn25, @Pdv25, @Pdv_uk, @storno_iz);";
+            con.Open();
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 try
                 {
-                    string constring = "datasource=localhost;port=3306;username=root;password=pass123";
-                    MySqlConnection con = new MySqlConnection(constring);
-                    string query = "INSERT INTO poreznaura.ira (Rbr, datum_rn, br_rn, kupac, " +
-                        "iznos_uk, osn0, osn5, pdv5, osn13, " +
-                        "pdv13, osn25, pdv25, pdv_uk, storno_iz)" +
-                        "VALUES (@Rbr, @Datum_racuna, @Broj_racuna, @Kupac, @Iznos, " +
-                        "@Osn0, @Osn5, @Pdv5, @Osn13, @Pdv13, " +
-                        "@Osn25, @Pdv25, @Pdv_uk, @storno_iz);";
-
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
                     if (row.IsNewRow) continue;
@@ -132,15 +132,15 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@Pdv_uk", Convert.ToDouble(row.Cells[24].Value.ToString().Trim()));
                     cmd.Parameters.AddWithValue("@storno_iz", Convert.ToInt32(row.Cells[4].Value.ToString().Trim()));
 
-                    con.Open();
                     cmd.ExecuteNonQuery();
-                    con.Close();
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
+                }                
             }
+            con.Close();
             MessageBox.Show("Unešeno");
         }
 

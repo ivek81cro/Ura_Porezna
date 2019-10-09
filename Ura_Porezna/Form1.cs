@@ -615,19 +615,9 @@ namespace Ura_Porezna
                     rowsAffected=cmd.ExecuteNonQuery();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                if (rowsAffected == 0)
-                {
-                    MessageBox.Show("Datoteka je otvorena u drugom programu\n" +
-                        "(zatvori calc ili excel) ");
-                    return;
-                }
-                else 
-                {
-                    MessageBox.Show("Provjeri valjanost dokumenta za import. ");
-                    return;
-                }
+                MessageBox.Show(ex.Message);
             }
             con.Close();
 
