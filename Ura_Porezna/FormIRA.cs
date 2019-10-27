@@ -15,11 +15,11 @@ using System.IO;
 
 namespace Ura_Porezna
 {
-    public partial class Form2 : Form
+    public partial class FormIRA : Form
     {
         string datumOdBox;
         string datumDoBox;
-        public Form2()
+        public FormIRA()
         {            
             InitializeComponent();
             var datumPocetni = DateTime.Now;

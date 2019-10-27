@@ -17,7 +17,7 @@ namespace Ura_Porezna
             InitializeComponent();
         }
         FormURA ura;
-        Form2 ira;
+        FormIRA ira;
 
         private void URAPoreznaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -49,7 +49,7 @@ namespace Ura_Porezna
         {
             if (ira == null)
             {
-                ira = new Form2();
+                ira = new FormIRA();
                 ira.MdiParent = this;
                 ira.FormClosed += Ira_FormClosed;
                 ira.Show();
@@ -58,7 +58,7 @@ namespace Ura_Porezna
             else
             {
                 ira.Close();
-                ira = new Form2();
+                ira = new FormIRA();
                 ira.MdiParent = this;
                 ira.FormClosed += Ira_FormClosed;
                 ira.Show();
