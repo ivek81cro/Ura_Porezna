@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
-    class IspPodIzBazeUra
+    class URAIspPodIzBaze
     {
         public void ispis(string datumOd, string datumDo, DataGridView dgw1 )
         {

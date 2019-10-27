@@ -87,7 +87,7 @@
     <Compile Include="FormIRA.Designer.cs">
       <DependentUpon>FormIRA.cs</DependentUpon>
     </Compile>
-    <Compile Include="IspPodIzBazeUra.cs" />
+    <Compile Include="URA-IspPodIzBaze.cs" />
     <Compile Include="Poruka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,7 +95,7 @@
       <DependentUpon>Poruka.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="upisCsvURA-Baza.cs">
+    <Compile Include="URA-upisCsv-Baza.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="URA-Odobrenja.cs">

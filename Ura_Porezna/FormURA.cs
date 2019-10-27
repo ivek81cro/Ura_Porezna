@@ -301,7 +301,7 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
-            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+            URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
             ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
 
@@ -408,7 +408,7 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
-            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+            URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
             ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
 
@@ -426,7 +426,7 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
-            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+            URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
             ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
             zbroji();
