@@ -1,19 +1,12 @@
-﻿using ExcelDataReader;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Xml.Linq;
-using System.Xml;
 using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Ura_Porezna
 {
@@ -33,7 +26,6 @@ namespace Ura_Porezna
                 "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");
         }
 
-        string path;
         string put;
 
         void BrisiDatagrid()
@@ -57,103 +49,7 @@ namespace Ura_Porezna
             citaj = bazazapovjed.ExecuteReader();
             bazaspoj.Close();
         }
-
-        void IspisIzBaze()
-        {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN '"
-                + datumOdBox + "' AND '" + datumDoBox + "' ;";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
-            foreach (DataGridViewRow Myrow in dataGridView1.Rows)
-            {
-                if (Convert.ToInt32(Myrow.Cells[17].Value) != 0)
-                {
-                    Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
-                }
-            }
-        }
-
-        void OdobrenjaZbirno()
-        {
-            label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
-                "password=pass123;Allow User Variables=True";
-            string query = "CALL odobrenjaZbirno('"+datumOdBox+"','"+datumDoBox+"'); ";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
-            double ukIznos = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value.ToString());
-            }
-            label1.Text = "Iznos: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value.ToString());
-            }
-            label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value.ToString());
-            }
-            label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value.ToString());
-            }
-            double pretporUk = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                pretporUk += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-            }
-            label11.Text = "Pretpor.Uk: " + pretporUk;
-            label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osnUk = osn5 + osn13 + osn25;
-            label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
-            }
-            label8.Text = "Pretpor.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString());
-            }
-            label9.Text = "Pretpor.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString());
-            }
-            label10.Text = "Pretpor.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-        }
-
+        
         void Troškovi()
         {
             label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
@@ -222,59 +118,7 @@ namespace Ura_Porezna
                 por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString());
             }
             label11.Text = "Pretpor.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-        }
-
-        void OdobrenjaPojedinacno()
-        {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "CALL odobrenjaPojedinacno('" + datumOdBox + "','" + datumDoBox + "');";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
-            foreach (DataGridViewRow Myrow in dataGridView1.Rows)
-            {            //Here 2 cell is target value and 1 cell is Volume
-                if (Convert.ToInt32(Myrow.Cells[17].Value) != 0)// Or your condition 
-                {
-                    Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
-                }
-            }
-        }
-
-        void OdobrenjaPojFilter()
-        {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
-                "password=pass123;Allow User Variables=True";
-            string query = "CALL odobrenja('" + datumOdBox + "' , '" + datumDoBox + 
-                "' , '" + txtDob.Text + "');";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
-            foreach (DataGridViewRow Myrow in dataGridView1.Rows)
-            {            //Here 2 cell is target value and 1 cell is Volume
-                if (Convert.ToInt32(Myrow.Cells[17].Value) != 0)// Or your condition 
-                {
-                    Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
-                }
-            }
-        }
+        }        
 
         void PopuniObrazac()
         {
@@ -289,7 +133,7 @@ namespace Ura_Porezna
             savFile.Filter = "XML|*.xml";
             if (savFile.ShowDialog() == DialogResult.OK)
             {
-                path = savFile.FileName;
+                put = savFile.FileName;
                 constring = "datasource=localhost;port=3306;username=root;password=pass123";
                 upit = "select * from poreznaura.obveznik;";
                 bazaspoj = new MySqlConnection(constring);
@@ -353,7 +197,7 @@ namespace Ura_Porezna
                 //xWrite.Close();
                 bazaspoj.Close();
                 // Save to Disk
-                xDoc.Save(path);
+                xDoc.Save(put);
 
                 //---------------------------------------------------------------RACUNI--------------------------------------------------------
                 constring = "datasource=localhost;port=3306;username=root;password=pass123";
@@ -363,7 +207,7 @@ namespace Ura_Porezna
                 bazazapovjed = new MySqlCommand(upit, bazaspoj);
                 bazaspoj.Open();
                 citaj = bazazapovjed.ExecuteReader();
-                XDocument doc = XDocument.Load(path);
+                XDocument doc = XDocument.Load(put);
                 while (citaj.Read())
                 {
                     doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Racuni").Add(new XElement(ns + "R",
@@ -386,7 +230,7 @@ namespace Ura_Porezna
                                                         new XElement(ns + "R17", citaj["por25"]),
                                                         new XElement(ns + "R18", "0.00")));
                 }
-                doc.Save(path);
+                doc.Save(put);
                 bazaspoj.Close();
             }
         }
@@ -454,19 +298,13 @@ namespace Ura_Porezna
 
         void PopuniUkupno()
         {
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN '"
-                + datumOdBox + "' AND '" + datumDoBox + "';";
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
+            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
+            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+
+            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+
+            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
+
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -528,7 +366,7 @@ namespace Ura_Porezna
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
             XNamespace ns2 = "http://e-porezna.porezna-uprava.hr/sheme/Metapodaci/v2-0";
 
-            XDocument doc = XDocument.Load(path);
+            XDocument doc = XDocument.Load(put);
 
 
             doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Ukupno").Add(
@@ -545,85 +383,7 @@ namespace Ura_Porezna
                                                 new XElement(ns + "U18", "0.00"));
 
 
-            doc.Save(path);
-        }
-
-        void OtvoriCsv()
-        {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.csv)|*.csv";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
-
-            if (choofdlog.ShowDialog() == DialogResult.OK)
-            {
-                put = choofdlog.FileName.ToString();
-            }
-            //popunjavanje datagridview1 prema parametrima prvog stupca u invoice.txt
-            if (put == null)
-            {
-                MessageBox.Show("Nije odabran file");
-                return;
-            }
-            /*Poruka poruka = new Poruka();
-            poruka.Show();*/
-            string constring = "datasource=localhost;port=3306;username=root;password=pass123";
-            MySqlConnection con = new MySqlConnection(constring);
-            string query = "INSERT INTO poreznaura.ura (Rbr, Datum_racuna, Broj_racuna, Za_uplatu, " +
-                "Naziv_dobavljaca, Sjediste_dobavljaca, OIB, Iznos_s_porezom, Porezna_osn0, " +
-                "Porezna_osn5, Porezna_osn13, Porezna_osn25, Ukupni_pretporez, por5, por13, por25, " +
-                "br_primke, storno, odobr) " +
-                "VALUES (@Rbr, @Datum_racuna, @Broj_racuna, @Za_uplatu, @Naziv_dobavljaca, " +
-                "@Sjediste_dobavljaca, @OIB, @Iznos_s_porezom, @Porezna_osn0, @Porezna_osn5, " +
-                "@Porezna_osn13, @Porezna_osn25, @Ukupni_pretporez, @por5, @por13, @por25, " +
-                "@br_primke, @storno, @odobr);";
-            con.Open();
-            int rowsAffected = 0;
-            try
-            {
-                string[] lines = File.ReadAllLines(put);
-                foreach (string line in lines)
-                {
-                    string[] text = line.Split(';', '\n');
-                    if (text[0] == "Rbr" || text[0] == "") continue;
-
-                    DateTime dt1 = DateTime.Parse(text[2]);
-                    text[6] = dt1.ToString("yyyy-MM-dd");
-
-                    MySqlCommand cmd = new MySqlCommand(query, con);
-
-                    cmd.Parameters.AddWithValue("@Rbr", text[1]);
-                    cmd.Parameters.AddWithValue("@Datum_racuna", text[6].ToString());
-                    cmd.Parameters.AddWithValue("@Broj_racuna", text[3].ToString().Trim());
-                    cmd.Parameters.AddWithValue("@Za_uplatu", Convert.ToDouble(text[11].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Naziv_dobavljaca", text[12].ToString().Trim());
-                    cmd.Parameters.AddWithValue("@br_primke", Convert.ToDouble(text[13].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Sjediste_dobavljaca", text[16].ToString().Trim());
-                    cmd.Parameters.AddWithValue("@OIB", text[17].ToString().Trim());
-                    cmd.Parameters.AddWithValue("@Iznos_s_porezom", Convert.ToDouble(text[18].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Porezna_osn0", Convert.ToDouble(text[19].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Porezna_osn5", Convert.ToDouble(text[20].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Porezna_osn13", Convert.ToDouble(text[24].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Porezna_osn25", Convert.ToDouble(text[28].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Ukupni_pretporez", Convert.ToDouble(text[30].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@por5", Convert.ToDouble(text[21].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@por13", Convert.ToDouble(text[25].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@por25", Convert.ToDouble(text[29].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@storno", text[5].ToString().Trim());
-                    cmd.Parameters.AddWithValue("@odobr", text[37].ToString().Trim());
-
-                    rowsAffected=cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            con.Close();
-
-            IspisIzBaze();
-            
-            MessageBox.Show("Unešeno");
+            doc.Save(put);
         }
 
         //kreiraj xml
@@ -642,7 +402,17 @@ namespace Ura_Porezna
             BrisiBazu();
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            OtvoriCsv();
+            UpisCsvURABaza upis = new UpisCsvURABaza();
+            upis.Upis(put);
+
+            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
+            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+
+            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+
+            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
+
+            MessageBox.Show("Unešeno");
         }
         //brisi bazu
         private void button3_Click(object sender, EventArgs e)
@@ -653,22 +423,29 @@ namespace Ura_Porezna
         private void button4_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            IspisIzBaze();
+            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
+            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+
+            IspPodIzBazeUra ispis = new IspPodIzBazeUra();
+
+            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
             zbroji();
         }
         //odobrenja zbirno
         private void button5_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            OdobrenjaZbirno();
+            URA_Odobrenja odobrenja = new URA_Odobrenja();
+            odobrenja.zbroji();
         }
         //odobrenja pojedinacno
         private void button6_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            OdobrenjaPojFilter();
+            URA_Odobrenja odobrenja = new URA_Odobrenja();
+            odobrenja.OdobrenjaPojFilter();
             //OdobrenjaPojedinacno();            
-            zbroji();
+            odobrenja.zbroji();
         }
         //troskovi
         private void button7_Click(object sender, EventArgs e)

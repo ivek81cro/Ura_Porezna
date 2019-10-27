@@ -359,22 +359,22 @@
 
         
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker datumOd;
-        private System.Windows.Forms.DateTimePicker datumDo;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        protected System.Windows.Forms.DateTimePicker datumOd;
+        protected System.Windows.Forms.DateTimePicker datumDo;
+        protected System.Windows.Forms.DataGridView dataGridView1;
+        protected System.Windows.Forms.Label label1;
+        protected System.Windows.Forms.Label label2;
+        protected System.Windows.Forms.Label label3;
+        protected System.Windows.Forms.Label label4;
+        protected System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        protected System.Windows.Forms.Label label8;
+        protected System.Windows.Forms.Label label9;
+        protected System.Windows.Forms.Label label10;
+        protected System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label13;
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox txtDob;
+        protected System.Windows.Forms.TextBox txtDob;
         private System.Windows.Forms.Label label16;
     }
 }
