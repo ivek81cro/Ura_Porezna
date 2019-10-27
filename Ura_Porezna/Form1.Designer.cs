@@ -361,7 +361,7 @@
         private System.Windows.Forms.Button button1;
         protected System.Windows.Forms.DateTimePicker datumOd;
         protected System.Windows.Forms.DateTimePicker datumDo;
-        protected System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView1;
         protected System.Windows.Forms.Label label1;
         protected System.Windows.Forms.Label label2;
         protected System.Windows.Forms.Label label3;

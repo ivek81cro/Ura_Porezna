@@ -22,8 +22,8 @@ namespace Ura_Porezna
             datumDo.Value = datumPocetni.AddMonths(0).AddDays(-DateTime.Now.Day);
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            MessageBox.Show("U windowsu: kut lijevo dolje kliknuti povećalo, utipkati services i kliknuti na to. " +
-                "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");
+            //MessageBox.Show("U windowsu: kut lijevo dolje kliknuti povećalo, utipkati services i kliknuti na to. " +
+            //    "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");
         }
 
         string put;
@@ -436,16 +436,17 @@ namespace Ura_Porezna
         {
             BrisiDatagrid();
             URA_Odobrenja odobrenja = new URA_Odobrenja();
-            odobrenja.zbroji();
+            odobrenja.OdobrenjaZbirno(dataGridView1);
+            odobrenja.zbrojiOdobrenja(dataGridView1);
         }
         //odobrenja pojedinacno
         private void button6_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             URA_Odobrenja odobrenja = new URA_Odobrenja();
-            odobrenja.OdobrenjaPojFilter();
+            odobrenja.OdobrenjaPojFilter(dataGridView1);
             //OdobrenjaPojedinacno();            
-            odobrenja.zbroji();
+            odobrenja.zbrojiOdobrenja(dataGridView1);
         }
         //troskovi
         private void button7_Click(object sender, EventArgs e)

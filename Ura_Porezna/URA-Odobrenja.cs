@@ -9,7 +9,7 @@ namespace Ura_Porezna
 {
     class URA_Odobrenja : Form1
     {
-        public void OdobrenjaZbirno()
+        public void OdobrenjaZbirno(DataGridView dataGridView1)
         {
             label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
             string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
@@ -26,59 +26,9 @@ namespace Ura_Porezna
                     dataGridView1.DataSource = ds.Tables[0];
                     conn.Close();
                 }
-            }
-            double ukIznos = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[1].Value.ToString());
-            }
-            label1.Text = "Iznos: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value.ToString());
-            }
-            label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value.ToString());
-            }
-            label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osn25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value.ToString());
-            }
-            double pretporUk = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                pretporUk += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-            }
-            label11.Text = "Pretpor.Uk: " + pretporUk;
-            label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osnUk = osn5 + osn13 + osn25;
-            label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
-            }
-            label8.Text = "Pretpor.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString());
-            }
-            label9.Text = "Pretpor.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString());
-            }
-            label10.Text = "Pretpor.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            }            
         }
-        public void OdobrenjaPojedinacno()
+        public void OdobrenjaPojedinacno(DataGridView dataGridView1)
         {
             string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
@@ -102,7 +52,7 @@ namespace Ura_Porezna
                 }
             }
         }
-        public void OdobrenjaPojFilter()
+        public void OdobrenjaPojFilter(DataGridView dataGridView1)
         {
             string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
@@ -127,6 +77,67 @@ namespace Ura_Porezna
                     Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
                 }
             }
+        }
+        public void zbrojiOdobrenja(DataGridView dataGridView1)
+        {
+            double ukIznos = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
+            }
+            double neoporezivo = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                neoporezivo += Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
+            }
+            //ukIznos = ukIznos - neoporezivo;
+            label1.Text = "Ukupno: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+
+            double osn5 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                osn5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString());
+            }
+            label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+
+            double osn13 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                osn13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString());
+            }
+            label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+
+            double osn25 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString());
+            }
+
+            label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            double osnUk = osn5 + osn13 + osn25;
+            label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            double por5 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                por5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString());
+            }
+            label8.Text = "Por.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            double por13 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                por13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[14].Value.ToString());
+            }
+            label9.Text = "Por.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            double por25 = 0.00;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[15].Value.ToString());
+            }
+            label10.Text = "Por.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+            //obilazak gubitka u lipama radi strojnog racunanja
+            //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
+            double pretPorUk = por5 + por13 + por25;
+            label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
     }
 }
