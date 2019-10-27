@@ -1,6 +1,6 @@
 ﻿namespace Ura_Porezna
 {
-    partial class Form1
+    partial class FormURA
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormURA));
             this.button1 = new System.Windows.Forms.Button();
             this.datumOd = new System.Windows.Forms.DateTimePicker();
             this.datumDo = new System.Windows.Forms.DateTimePicker();

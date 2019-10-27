@@ -10,11 +10,11 @@ using System.Xml.Linq;
 
 namespace Ura_Porezna
 {
-    public partial class Form1 : Form
+    public partial class FormURA : Form
     {
         string datumOdBox;
         string datumDoBox;
-        public Form1()
+        public FormURA()
         {
             InitializeComponent();
             var datumPocetni = DateTime.Now;

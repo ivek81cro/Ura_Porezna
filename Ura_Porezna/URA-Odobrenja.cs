@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
-    class URA_Odobrenja : Form1
+    class URA_Odobrenja : FormURA
     {
         public void OdobrenjaZbirno(DataGridView dataGridView1)
         {
