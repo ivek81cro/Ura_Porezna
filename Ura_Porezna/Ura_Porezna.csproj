@@ -75,19 +75,22 @@
     <Compile Include="Form0.Designer.cs">
       <DependentUpon>Form0.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormURA.cs">
+    <Compile Include="URA\FormURA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormURA.Designer.cs">
+    <Compile Include="URA\FormURA.Designer.cs">
       <DependentUpon>FormURA.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormIRA.cs">
+    <Compile Include="IRA\FormIRA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormIRA.Designer.cs">
+    <Compile Include="IRA\FormIRA.Designer.cs">
       <DependentUpon>FormIRA.cs</DependentUpon>
     </Compile>
-    <Compile Include="URA-IspPodIzBaze.cs" />
+    <Compile Include="URA\PopuniXml.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="URA\URA-IspPodIzBaze.cs" />
     <Compile Include="Poruka.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,19 +98,22 @@
       <DependentUpon>Poruka.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="URA-upisCsv-Baza.cs">
+    <Compile Include="URA\URA-Troskovi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="URA-Odobrenja.cs">
+    <Compile Include="URA\URA-upisCsv-Baza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="URA\URA-Odobrenja.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Form0.resx">
       <DependentUpon>Form0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormURA.resx">
+    <EmbeddedResource Include="URA\FormURA.resx">
       <DependentUpon>FormURA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormIRA.resx">
+    <EmbeddedResource Include="IRA\FormIRA.resx">
       <DependentUpon>FormIRA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Poruka.resx">
@@ -167,7 +173,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="backupDijelova.txt" />
     <Content Include="if_book-note-paper-school_2824439.ico" />
   </ItemGroup>
   <ItemGroup>

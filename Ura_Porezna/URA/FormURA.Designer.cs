@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormURA));
             this.button1 = new System.Windows.Forms.Button();
-            this.datumOd = new System.Windows.Forms.DateTimePicker();
             this.datumDo = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.txtDob = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.datumOd = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,16 +68,6 @@
             this.button1.Text = "Kreiraj XML za Poreznu";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // datumOd
-            // 
-            this.datumOd.CustomFormat = "dd-MM-yyyy";
-            this.datumOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datumOd.Location = new System.Drawing.Point(100, 67);
-            this.datumOd.Name = "datumOd";
-            this.datumOd.Size = new System.Drawing.Size(122, 22);
-            this.datumOd.TabIndex = 1;
-            this.datumOd.Value = new System.DateTime(2019, 2, 13, 21, 5, 21, 0);
             // 
             // datumDo
             // 
@@ -100,6 +90,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 361);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(878, 192);
             this.dataGridView1.TabIndex = 3;
@@ -316,7 +307,17 @@
             this.label16.TabIndex = 26;
             this.label16.Text = "Dobavljač-filter";
             // 
-            // Form1
+            // datumOd
+            // 
+            this.datumOd.CustomFormat = "dd-MM-yyyy";
+            this.datumOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datumOd.Location = new System.Drawing.Point(100, 67);
+            this.datumOd.Name = "datumOd";
+            this.datumOd.Size = new System.Drawing.Size(122, 22);
+            this.datumOd.TabIndex = 1;
+            this.datumOd.Value = new System.DateTime(2019, 2, 13, 21, 5, 21, 0);
+            // 
+            // FormURA
             // 
             this.ClientSize = new System.Drawing.Size(902, 557);
             this.Controls.Add(this.label16);
@@ -347,7 +348,7 @@
             this.Controls.Add(this.datumOd);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "FormURA";
             this.Text = "URA";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -359,22 +360,21 @@
 
         
         private System.Windows.Forms.Button button1;
-        protected System.Windows.Forms.DateTimePicker datumOd;
-        protected System.Windows.Forms.DateTimePicker datumDo;
+        private System.Windows.Forms.DateTimePicker datumDo;
         private System.Windows.Forms.DataGridView dataGridView1;
-        protected System.Windows.Forms.Label label1;
-        protected System.Windows.Forms.Label label2;
-        protected System.Windows.Forms.Label label3;
-        protected System.Windows.Forms.Label label4;
-        protected System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        protected System.Windows.Forms.Label label8;
-        protected System.Windows.Forms.Label label9;
-        protected System.Windows.Forms.Label label10;
-        protected System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label13;
@@ -383,8 +383,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        protected System.Windows.Forms.TextBox txtDob;
+        private System.Windows.Forms.TextBox txtDob;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker datumOd;
     }
 }
 
