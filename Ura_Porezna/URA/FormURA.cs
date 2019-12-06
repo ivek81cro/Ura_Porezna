@@ -118,17 +118,12 @@ namespace Ura_Porezna
         {
             BrisiDatagrid();
             BrisiBazu();
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             UpisCsvURABaza upis = new UpisCsvURABaza();
             upis.Upis(put);
 
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis();
+            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
 
             MessageBox.Show("Unešeno");
         }
@@ -141,12 +136,10 @@ namespace Ura_Porezna
         private void button4_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis();
+            ispis.ispis(datumOdBox,datumDoBox,dataGridView1);
             zbroji();
         }
         //odobrenja zbirno

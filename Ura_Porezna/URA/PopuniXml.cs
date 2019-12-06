@@ -128,7 +128,7 @@ namespace Ura_Porezna
         {
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis();
+            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
 
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)

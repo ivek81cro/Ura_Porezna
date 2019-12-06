@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
-    class URAIspPodIzBaze : FormURA
+    class URAIspPodIzBaze
     {
-        public void ispis()
+        public void ispis(string datumOdBox, string datumDoBox, DataGridView dataGridView1)
         {
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
             string query = "SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN '"
