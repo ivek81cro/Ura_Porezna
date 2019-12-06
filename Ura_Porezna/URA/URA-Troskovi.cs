@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace Ura_Porezna
 {
-    partial class FormURA
+    public partial class FormURA
     {
         void Troškovi()
         {            

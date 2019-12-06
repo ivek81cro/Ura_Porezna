@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Ura_Porezna
 {
-    public partial class FormURA : Form
+    partial class FormURA
     {
         public void PopuniObrazac()
         {

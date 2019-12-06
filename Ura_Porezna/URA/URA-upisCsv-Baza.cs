@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
-    class UpisCsvURABaza : FormURA
+    class UpisCsvURABaza
     {
         public void Upis(string put)
         {

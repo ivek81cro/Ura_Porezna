@@ -7,11 +7,10 @@ using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
-    public partial class FormURA : Form
+    public partial class FormURA
     {
         public void OdobrenjaZbirno()
         {
-            label8.Text = "0.00"; label9.Text = "0.00"; label10.Text = "0.00"; label11.Text = "0.00";
             string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
