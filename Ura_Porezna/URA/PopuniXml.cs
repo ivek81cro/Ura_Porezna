@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace Ura_Porezna
 {
-    partial class FormURA
+    class PopuniXml : FormURA
     {
         public void PopuniObrazac()
         {
@@ -61,8 +61,8 @@ namespace Ura_Porezna
                                     new XElement(ns2 + "Adresant", "Ministarstvo Financija, Porezna uprava, Zagreb")),
                                 new XElement(ns + "Zaglavlje",
                                     new XElement(ns + "Razdoblje",
-                                        new XElement(ns + "DatumOd", datumOd.Value.ToString("yyyy-MM-dd")),
-                                        new XElement(ns + "DatumDo", datumDo.Value.ToString("yyyy-MM-dd"))),
+                                        new XElement(ns + "DatumOd", datumOdBox),
+                                        new XElement(ns + "DatumDo", datumOdBox)),
                                     new XElement(ns + "Obveznik",
                                         new XElement(ns + "OIB", citaj["oib"].ToString()),
                                         new XElement(ns + "Ime", citaj["ime"].ToString().ToUpper()),
@@ -124,14 +124,11 @@ namespace Ura_Porezna
                 bazaspoj.Close();
             }
         }
-        void PopuniUkupno()
+        public void PopuniUkupno()
         {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
+            ispis.ispis();
 
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)

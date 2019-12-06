@@ -202,6 +202,6 @@ namespace Ura_Porezna
             //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
             double pretPorUk = por5 + por13 + por25;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-        }
+        }        
     }
 }

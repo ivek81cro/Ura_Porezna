@@ -8,8 +8,9 @@ namespace Ura_Porezna
 {
     public partial class FormURA : Form
     {
-        string datumOdBox;
-        string datumDoBox;
+        protected string datumOdBox;
+        protected string datumDoBox;
+        protected string put;
         public FormURA()
         {
             InitializeComponent();
@@ -21,9 +22,6 @@ namespace Ura_Porezna
             //MessageBox.Show("U windowsu: kut lijevo dolje kliknuti povećalo, utipkati services i kliknuti na to. " +
             //    "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");
         }
-
-        string put;
-
         void BrisiDatagrid()
         {
             dataGridView1.DataSource = null;
@@ -104,15 +102,16 @@ namespace Ura_Porezna
             double pretPorUk = por5 + por13 + por25;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
-
         //kreiraj xml
         private void button1_Click(object sender, EventArgs e)
         {
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             BrisiDatagrid();
-            PopuniObrazac();
-            PopuniUkupno();
+
+            PopuniXml xmlPopuna = new PopuniXml();
+            xmlPopuna.PopuniObrazac();
+            xmlPopuna.PopuniUkupno();
         }
         //otvori csv
         private void button2_Click(object sender, EventArgs e)
@@ -129,7 +128,7 @@ namespace Ura_Porezna
 
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
+            ispis.ispis();
 
             MessageBox.Show("Unešeno");
         }
@@ -147,7 +146,7 @@ namespace Ura_Porezna
 
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
-            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
+            ispis.ispis();
             zbroji();
         }
         //odobrenja zbirno
