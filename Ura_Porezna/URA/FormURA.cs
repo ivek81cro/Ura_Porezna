@@ -152,7 +152,6 @@ namespace Ura_Porezna
         private void button6_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-           
             OdobrenjaPojFilter();
             
             //odobrenja.zbrojiOdobrenja(dataGridView1);

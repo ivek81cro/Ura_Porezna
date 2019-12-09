@@ -149,8 +149,8 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN '"
-                + datumOdBox + "' AND '" + datumDoBox + "' ;";
+            string query = string.Format("SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN "
+                + "'{0}' AND '{1}' ;", datumOdBox, datumDoBox);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -232,8 +232,8 @@ namespace Ura_Porezna
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ira WHERE Datum_rn BETWEEN '" + datumOdBox + 
-                "' AND '" + datumDoBox + "' AND kupac like '%" + textFilter.Text + "%'; ";
+            string query = string.Format("SELECT * FROM poreznaura.ira WHERE Datum_rn BETWEEN " +
+                "{0} AND {1} AND kupac like '%{2}%'; ", datumOdBox, datumDoBox, textFilter.Text);
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {

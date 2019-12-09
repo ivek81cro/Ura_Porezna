@@ -11,8 +11,8 @@ namespace Ura_Porezna
         public void ispis(string datumOdBox, string datumDoBox, DataGridView dataGridView1)
         {
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = "SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN '"
-                + datumOdBox + "' AND '" + datumDoBox + "' ;";
+            string query = string.Format("SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN "+
+                "'{0}' AND '{1}';", datumOdBox, datumDoBox);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))

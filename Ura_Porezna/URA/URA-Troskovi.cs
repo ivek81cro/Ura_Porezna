@@ -11,7 +11,7 @@ namespace Ura_Porezna
         {            
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
-            string query = "CALL troskovi('" + datumOdBox + "','" + datumDoBox + "');";
+            string query = string.Format("CALL troskovi('{0}','{1}');", datumOdBox, datumDoBox);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))

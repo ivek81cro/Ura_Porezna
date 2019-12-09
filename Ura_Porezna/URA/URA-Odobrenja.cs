@@ -15,7 +15,7 @@ namespace Ura_Porezna
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
-            string query = "CALL odobrenjaZbirno('" + datumOdBox + "','" + datumDoBox + "'); ";
+            string query = string.Format("CALL odobrenjaZbirno('{0}','{1}');", datumOdBox, datumDoBox);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -34,7 +34,7 @@ namespace Ura_Porezna
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
-            string query = "CALL odobrenjaPojedinacno('" + datumOdBox + "','" + datumDoBox + "');";
+            string query = string.Format("CALL odobrenjaPojedinacno('{0}','{1}');", datumOdBox, datumDoBox);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
@@ -60,8 +60,8 @@ namespace Ura_Porezna
             string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
-            string query = "CALL odobrenja('" + datumOdBox + "' , '" + datumDoBox +
-                "' , '" + txtDob.Text + "');";
+            string query = string.Format("CALL odobrenja('{0}','{1}', '{2}');",
+                datumOdBox, datumDoBox, txtDob.Text);
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))

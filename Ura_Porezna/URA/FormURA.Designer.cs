@@ -383,7 +383,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox txtDob;
+        protected System.Windows.Forms.TextBox txtDob;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker datumOd;
     }

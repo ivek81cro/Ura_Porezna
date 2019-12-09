@@ -25,7 +25,7 @@ namespace Ura_Porezna
             {
                 put = savFile.FileName;
                 constring = "datasource=localhost;port=3306;username=root;password=pass123";
-                upit = "select * from poreznaura.obveznik;";
+                upit = "SELECT * FROM poreznaura.obveznik;";
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upit, bazaspoj);
 
