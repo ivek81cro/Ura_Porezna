@@ -253,7 +253,7 @@ namespace Ura_Porezna
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string constring = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";            
-            string upit = "CALL porez('"+datumOdBox+"','"+datumDoBox+"')";
+            string upit = string.Format("CALL porez('{0}','{1}');", datumOdBox, datumDoBox);
             MySqlConnection bazaspoj = new MySqlConnection(constring);
             MySqlCommand bazazapovjed = new MySqlCommand(upit, bazaspoj);
             MySqlDataReader citaj;

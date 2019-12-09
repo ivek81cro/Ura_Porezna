@@ -91,8 +91,8 @@ namespace Ura_Porezna
 
                 //---------------------------------------------------------------RACUNI--------------------------------------------------------
                 constring = "datasource=localhost;port=3306;username=root;password=pass123";
-                upit = "select * from poreznaura.ura where Datum_racuna between '"
-                    + datumOdBox + "' AND '" + datumDoBox + "';";
+                upit = string.Format("SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN " +
+                    "'{0}' AND '{1}';", datumOdBox, datumDoBox);
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upit, bazaspoj);
                 bazaspoj.Open();
