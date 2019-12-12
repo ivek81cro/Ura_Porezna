@@ -75,6 +75,13 @@
     <Compile Include="Form0.Designer.cs">
       <DependentUpon>Form0.cs</DependentUpon>
     </Compile>
+    <Compile Include="HZZO\Hzzo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HZZO\Hzzo.Designer.cs">
+      <DependentUpon>Hzzo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HZZO\ucitajXls.cs" />
     <Compile Include="URA\FormURA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,14 +108,15 @@
     <Compile Include="URA\URA-Troskovi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="URA\URA-upisCsv-Baza.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="URA\URA-upisCsv-Baza.cs" />
     <Compile Include="URA\URA-Odobrenja.cs">
       <SubType>Form</SubType>
     </Compile>
     <EmbeddedResource Include="Form0.resx">
       <DependentUpon>Form0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HZZO\Hzzo.resx">
+      <DependentUpon>Hzzo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="URA\FormURA.resx">
       <DependentUpon>FormURA.cs</DependentUpon>

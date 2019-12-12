@@ -18,6 +18,7 @@ namespace Ura_Porezna
         }
         FormURA ura;
         FormIRA ira;
+        Hzzo hzzo;
 
         private void URAPoreznaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -31,12 +32,7 @@ namespace Ura_Porezna
             }
             else
             {
-                ura.Close();
-                ura = new FormURA();
-                ura.MdiParent = this;
-                ura.FormClosed += Ura_FormClosed;
-                ura.Show();
-                ura.WindowState = FormWindowState.Maximized;
+                ura.BringToFront();               
             }
         }
         void Ura_FormClosed(object sender, FormClosedEventArgs e)
@@ -57,17 +53,33 @@ namespace Ura_Porezna
             }
             else
             {
-                ira.Close();
-                ira = new FormIRA();
-                ira.MdiParent = this;
-                ira.FormClosed += Ira_FormClosed;
-                ira.Show();
-                ira.WindowState = FormWindowState.Maximized;
+                ira.BringToFront();
             }
         }
         void Ira_FormClosed(object sender, FormClosedEventArgs e)
         {
             ira = null;
+            //throw new NotImplementedException();
+        }
+
+        private void pDVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (hzzo == null)
+            {
+                hzzo = new Hzzo();
+                hzzo.MdiParent = this;
+                hzzo.FormClosed += Hzzo_FormClosed;
+                hzzo.Show();
+                hzzo.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                hzzo.BringToFront();
+            }
+        }
+        void Hzzo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            hzzo = null;
             //throw new NotImplementedException();
         }
     }
