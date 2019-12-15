@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormURA));
             this.button1 = new System.Windows.Forms.Button();
             this.datumDo = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new CustomDataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -361,7 +361,7 @@
         
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker datumDo;
-        protected System.Windows.Forms.DataGridView dataGridView1;
+        protected CustomDataGridView dataGridView1;
         protected System.Windows.Forms.Label label1;
         protected System.Windows.Forms.Label label2;
         protected System.Windows.Forms.Label label3;
