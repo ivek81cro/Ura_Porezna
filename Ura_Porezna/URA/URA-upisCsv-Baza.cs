@@ -10,7 +10,7 @@ namespace Ura_Porezna
         public void Upis(string put)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.csv)|*.csv";
+            choofdlog.Filter = "All Files (*.xls)|*.xls";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
 
@@ -18,12 +18,13 @@ namespace Ura_Porezna
             {
                 put = choofdlog.FileName.ToString();
             }
-            //popunjavanje datagridview1 prema parametrima prvog stupca u invoice.txt
             if (put == null)
             {
                 MessageBox.Show("Nije odabran file");
                 return;
             }
+
+            ConvertXlsToCsv.Convert(ref put);
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);

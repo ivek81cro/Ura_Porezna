@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ExcelDataReader;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -13,7 +14,7 @@ namespace Ura_Porezna
         public void Otvori()
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.csv)|*.csv";
+            choofdlog.Filter = "All Files (*.xls)|*.xls";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
 
@@ -26,6 +27,9 @@ namespace Ura_Porezna
                 MessageBox.Show("Nije odabran file");
                 return;
             }
+
+            ConvertXlsToCsv.Convert(ref put);
+
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
             string query = "INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
@@ -45,10 +49,10 @@ namespace Ura_Porezna
 
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
-                    cmd.Parameters.AddWithValue("@datum", text[0].ToString());
+                    cmd.Parameters.AddWithValue("@datum", text[0].ToString().Substring(0,10));
                     cmd.Parameters.AddWithValue("@dokument", text[1].ToString());
                     cmd.Parameters.AddWithValue("@brojRn", brRn);
-                    cmd.Parameters.AddWithValue("@datumRn", text[3].ToString().Trim());
+                    cmd.Parameters.AddWithValue("@datumRn", text[3].ToString().Substring(0, 10));
                     cmd.Parameters.AddWithValue("@izvor", text[4].ToString().Trim());
                     cmd.Parameters.AddWithValue("@opis", text[5].ToString().Trim());
                     cmd.Parameters.AddWithValue("@iznos", Convert.ToDouble(text[6].ToString().Trim()));

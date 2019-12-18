@@ -36,9 +36,9 @@
             // btn_ucitaj
             // 
             this.btn_ucitaj.Location = new System.Drawing.Point(10, 11);
-            this.btn_ucitaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_ucitaj.Margin = new System.Windows.Forms.Padding(2);
             this.btn_ucitaj.Name = "btn_ucitaj";
-            this.btn_ucitaj.Size = new System.Drawing.Size(69, 29);
+            this.btn_ucitaj.Size = new System.Drawing.Size(97, 29);
             this.btn_ucitaj.TabIndex = 0;
             this.btn_ucitaj.Text = "Učitaj spec.";
             this.btn_ucitaj.UseVisualStyleBackColor = true;
@@ -61,7 +61,7 @@
             this.ClientSize = new System.Drawing.Size(644, 411);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_ucitaj);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Hzzo";
             this.Text = "Hzzo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
