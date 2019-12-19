@@ -17,12 +17,16 @@ namespace Ura_Porezna
         {
             InitializeComponent();
             showData();
+            for (int i =0; i<20; i++)
+                comboGodine.Items.Add(DateTime.Now.Year-i);
+            comboGodine.Text = "2019";
         }
 
         private void btn_ucitaj_Click(object sender, EventArgs e)
         {
+            int godina = Int32.Parse(comboGodine.Text);
             UcitajXls citaj = new UcitajXls();
-            citaj.Otvori();
+            citaj.Otvori(godina);
             showData();
         }
 

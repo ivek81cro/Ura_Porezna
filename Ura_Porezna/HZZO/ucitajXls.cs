@@ -11,7 +11,7 @@ namespace Ura_Porezna
     class UcitajXls
     {
         string put;
-        public void Otvori()
+        public void Otvori(int godina)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
             choofdlog.Filter = "All Files (*.xls)|*.xls";
@@ -32,10 +32,10 @@ namespace Ura_Porezna
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
-            string query = "INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
+            string query = String.Format("INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
                 "datumRn, izvor, opis, iznos, placeniIznos) " +
                 "VALUES (@datum, @dokument, @brojRn, @datumRn, @izvor, " +
-                "@opis, @iznos, @placeniIznos);";
+                "@opis, @iznos, @placeniIznos);");
             con.Open();
             int rowsAffected = 0;
             try
@@ -45,6 +45,8 @@ namespace Ura_Porezna
                 {
                     string[] text = lines[i].Split(';', '\n');
                     string[] temp = text[2].Split('-');
+                    if (Int32.Parse(temp[2].Split('/')[1]) != godina)
+                        continue;
                     int brRn= Int32.Parse(temp[0]);
 
                     MySqlCommand cmd = new MySqlCommand(query, con);
@@ -57,9 +59,13 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@opis", text[5].ToString().Trim());
                     cmd.Parameters.AddWithValue("@iznos", Convert.ToDouble(text[6].ToString().Trim()));
                     cmd.Parameters.AddWithValue("@placeniIznos", Convert.ToDouble(text[7].ToString().Trim()));
-                    
+                    cmd.Parameters.AddWithValue("@godina", godina);
+
                     rowsAffected = cmd.ExecuteNonQuery();
                 }
+                query = string.Format("CALL poreznaura.placeno();");
+                MySqlCommand call = new MySqlCommand(query, con);
+                call.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

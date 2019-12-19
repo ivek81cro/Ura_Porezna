@@ -54,6 +54,22 @@ namespace Ura_Porezna
             bazaspoj.Close();
         }
 
+        void obojiRedove()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[4].Value) == Convert.ToInt32(row.Cells[14].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(204, 255, 153);
+                }
+                if (Convert.ToInt32(row.Cells[13].Value) != 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.MistyRose;
+                }
+            }
+            
+        }
+
         void OtvoriCsv()
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
@@ -211,8 +227,8 @@ namespace Ura_Porezna
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
 
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = string.Format("SELECT * FROM poreznaura.ira WHERE Datum_rn BETWEEN " +
-                "{0} AND {1} AND kupac like '%{2}%'; ", datumOdBox, datumDoBox, textFilter.Text);
+            string query = string.Format("SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN " +
+                "'{0}' AND '{1}' AND kupac like '%{2}%'; ", datumOdBox, datumDoBox, textFilter.Text);
 
             using (MySqlConnection conn = new MySqlConnection(connStr))
             {
@@ -285,6 +301,7 @@ namespace Ura_Porezna
             BrisiDatagrid();
             BrisiBazu();
             OtvoriCsv();
+            obojiRedove();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -298,13 +315,7 @@ namespace Ura_Porezna
             BrisiDatagrid();
             IspisIzBaze();
             zbroji();
-            foreach (DataGridViewRow Myrow in dataGridView1.Rows)
-            {
-                if (Convert.ToInt32(Myrow.Cells[13].Value) != 0)
-                {
-                    Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
-                }
-            }
+            obojiRedove();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -316,6 +327,7 @@ namespace Ura_Porezna
         {
             filterPodataka();
             zbroji();
+            obojiRedove();
         }
     }
 }
