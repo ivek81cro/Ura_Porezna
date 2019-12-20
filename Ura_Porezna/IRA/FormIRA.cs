@@ -27,9 +27,20 @@ namespace Ura_Porezna
             datumDo.Value = datumPocetni.AddMonths(0).AddDays(-DateTime.Now.Day);
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            /*MessageBox.Show("U windowsu: kut lijevo dolje kliknuti povećalo, utipkati services i kliknuti na to. " +
-                "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");*/
+            datumOd.TextChanged += DatumOd_TextChanged;
+            datumDo.TextChanged += DatumDo_TextChanged;
         }
+
+        private void DatumDo_TextChanged(object sender, EventArgs e)
+        {
+            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+        }
+
+        private void DatumOd_TextChanged(object sender, EventArgs e)
+        {
+            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
+        }
+
         string put;
 
         void BrisiDatagrid()
@@ -72,21 +83,6 @@ namespace Ura_Porezna
 
         void OtvoriCsv()
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.xls)|*.xls";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
-
-            if (choofdlog.ShowDialog() == DialogResult.OK)
-            {
-                put = choofdlog.FileName.ToString();
-            }
-            if (put == null)
-            {
-                MessageBox.Show("Nije odabran file");
-                return;
-            }
-
             ConvertXlsToCsv.Convert(ref put);
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
@@ -137,26 +133,7 @@ namespace Ura_Porezna
             }
             con.Close();
             MessageBox.Show("Unešeno");
-        }
-
-        void IspisIzBaze()
-        {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = string.Format("SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN "
-                + "'{0}' AND '{1}' ;", datumOdBox, datumDoBox);
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
-        }
+        }       
 
         void zbroji()
         {
@@ -223,23 +200,8 @@ namespace Ura_Porezna
 
         void filterPodataka()
         {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
-
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = string.Format("SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN " +
-                "'{0}' AND '{1}' AND kupac like '%{2}%'; ", datumOdBox, datumDoBox, textFilter.Text);
-
-            using (MySqlConnection conn = new MySqlConnection(connStr))
-            {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
-                }
-            }
+            Filter filt = new Filter();
+            filt.Filtriraj(datumOdBox, datumDoBox, textFilter.Text, dataGridView1);
         }
 
         void izracunPDV()
@@ -301,6 +263,7 @@ namespace Ura_Porezna
             BrisiDatagrid();
             BrisiBazu();
             OtvoriCsv();
+            Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
             obojiRedove();
         }
 
@@ -313,7 +276,7 @@ namespace Ura_Porezna
         private void button4_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            IspisIzBaze();
+            Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
             zbroji();
             obojiRedove();
         }

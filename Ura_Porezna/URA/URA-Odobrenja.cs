@@ -11,8 +11,6 @@ namespace Ura_Porezna
     {
         public void OdobrenjaZbirno()
         {
-            string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
             string query = string.Format("CALL odobrenjaZbirno('{0}','{1}');", datumOdBox, datumDoBox);
@@ -30,8 +28,6 @@ namespace Ura_Porezna
         }
         public void OdobrenjaPojedinacno()
         {
-            string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
             string query = string.Format("CALL odobrenjaPojedinacno('{0}','{1}');", datumOdBox, datumDoBox);
@@ -56,8 +52,6 @@ namespace Ura_Porezna
         }
         public void OdobrenjaPojFilter()
         {
-            string datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            string datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string connStr = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
                 "password=pass123;Allow User Variables=True";
             string query = string.Format("CALL odobrenja('{0}','{1}', '{2}');",

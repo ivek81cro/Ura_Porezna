@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using System.Data;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
@@ -8,6 +9,21 @@ namespace Ura_Porezna
     {
         public static void Convert(ref string put)
         {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.xls)|*.xls";
+            choofdlog.FilterIndex = 1;
+            choofdlog.Multiselect = false;
+
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                put = choofdlog.FileName.ToString();
+            }
+            if (put == null)
+            {
+                MessageBox.Show("Nije odabran file");
+                return;
+            }
+
             FileStream stream = File.Open(put, FileMode.Open, FileAccess.Read);
             IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
             DataSet result = excelReader.AsDataSet();

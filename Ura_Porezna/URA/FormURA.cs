@@ -19,9 +19,22 @@ namespace Ura_Porezna
             datumDo.Value = datumPocetni.AddMonths(0).AddDays(-DateTime.Now.Day);
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+            datumOd.TextChanged += DatumOd_TextChanged;
+            datumDo.TextChanged += DatumDo_TextChanged;
             //MessageBox.Show("U windowsu: kut lijevo dolje kliknuti povećalo, utipkati services i kliknuti na to. " +
             //    "Popis je po abecednom redu, naći MYSQL, desni klik, odabrati start. Zatvori services.");
         }
+
+        private void DatumDo_TextChanged(object sender, EventArgs e)
+        {
+            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
+        }
+
+        private void DatumOd_TextChanged(object sender, EventArgs e)
+        {
+            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
+        }
+
         void BrisiDatagrid()
         {
             dataGridView1.DataSource = null;
@@ -105,8 +118,6 @@ namespace Ura_Porezna
         //kreiraj xml
         private void button1_Click(object sender, EventArgs e)
         {
-            datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
-            datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             BrisiDatagrid();
 
             PopuniXml xmlPopuna = new PopuniXml();
