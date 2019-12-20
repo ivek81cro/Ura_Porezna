@@ -199,7 +199,6 @@ namespace Ura_Porezna
         private void button2_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            BrisiBazu();
             OtvoriXls.Otvori(ref put);
             Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
             obojiRedove();

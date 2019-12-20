@@ -128,7 +128,6 @@ namespace Ura_Porezna
         private void button2_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            BrisiBazu();
             UpisCsvURABaza upis = new UpisCsvURABaza();
             upis.Upis(put);
 

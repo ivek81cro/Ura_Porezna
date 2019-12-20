@@ -13,7 +13,15 @@ namespace Ura_Porezna
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
-            string query = string.Format("INSERT INTO poreznaura.ura (Rbr, Datum_racuna, Broj_racuna, Za_uplatu, " +
+            string query = string.Format("SELECT Rbr FROM poreznaura.ura ORDER BY Rbr DESC LIMIT 1;");
+            con.Open();
+
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            Object result = cmd.ExecuteScalar();
+            int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
+           
+
+            query = string.Format("INSERT INTO poreznaura.ura (Rbr, Datum_racuna, Broj_racuna, Za_uplatu, " +
                 "Naziv_dobavljaca, Sjediste_dobavljaca, OIB, Iznos_s_porezom, Porezna_osn0, " +
                 "Porezna_osn5, Porezna_osn13, Porezna_osn25, Ukupni_pretporez, por5, por13, por25, " +
                 "br_primke, storno, odobr) " +
@@ -21,7 +29,7 @@ namespace Ura_Porezna
                 "@Sjediste_dobavljaca, @OIB, @Iznos_s_porezom, @Porezna_osn0, @Porezna_osn5, " +
                 "@Porezna_osn13, @Porezna_osn25, @Ukupni_pretporez, @por5, @por13, @por25, " +
                 "@br_primke, @storno, @odobr);");
-            con.Open();
+
             int rowsAffected = 0;
             try
             {
@@ -30,13 +38,16 @@ namespace Ura_Porezna
                 {
                     string[] text = line.Split(';', '\n');
                     if (text[0] == "Rbr" || text[0] == "") continue;
+                    int trenutniRed = Int32.Parse(text[0]);
+                    if (zadnjiRed > 0 && zadnjiRed >= trenutniRed) continue;
+
 
                     DateTime dt1 = DateTime.Parse(text[2]);
                     text[6] = dt1.ToString("yyyy-MM-dd");
 
-                    MySqlCommand cmd = new MySqlCommand(query, con);
+                    cmd = new MySqlCommand(query, con);
 
-                    cmd.Parameters.AddWithValue("@Rbr", text[1]);
+                    cmd.Parameters.AddWithValue("@Rbr", text[1].ToString());
                     cmd.Parameters.AddWithValue("@Datum_racuna", text[6].ToString());
                     cmd.Parameters.AddWithValue("@Broj_racuna", text[3].ToString().Trim());
                     cmd.Parameters.AddWithValue("@Za_uplatu", Convert.ToDouble(text[11].ToString().Trim()));
