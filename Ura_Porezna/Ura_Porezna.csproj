@@ -106,6 +106,7 @@
     <Compile Include="HZZO\ucitajXls.cs" />
     <Compile Include="IRA\Filter.cs" />
     <Compile Include="IRA\Ispis.cs" />
+    <Compile Include="IRA\OtvoriXls.cs" />
     <Compile Include="URA\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
