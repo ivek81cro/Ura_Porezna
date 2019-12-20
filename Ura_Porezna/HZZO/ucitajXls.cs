@@ -1,8 +1,5 @@
-﻿using ExcelDataReader;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Data;
-using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
@@ -13,21 +10,6 @@ namespace Ura_Porezna
         string put;
         public void Otvori(int godina)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.xls)|*.xls";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
-
-            if (choofdlog.ShowDialog() == DialogResult.OK)
-            {
-                put = choofdlog.FileName.ToString();
-            }
-            if (put == null)
-            {
-                MessageBox.Show("Nije odabran file");
-                return;
-            }
-
             ConvertXlsToCsv.Convert(ref put);
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
@@ -45,6 +27,8 @@ namespace Ura_Porezna
                 {
                     string[] text = lines[i].Split(';', '\n');
                     string[] temp = text[2].Split('-');
+                    if (text[5].Contains("CEZ"))
+                        continue;
                     if (Int32.Parse(temp[2].Split('/')[1]) != godina)
                         continue;
                     int brRn= Int32.Parse(temp[0]);
