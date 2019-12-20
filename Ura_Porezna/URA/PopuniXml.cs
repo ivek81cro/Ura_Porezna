@@ -10,7 +10,7 @@ namespace Ura_Porezna
 {
     class PopuniXml : FormURA
     {
-        public void PopuniObrazac()
+        public void PopuniObrazac(string datumOdBox, string datumDoBox)
         {
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             string upit;
@@ -62,7 +62,7 @@ namespace Ura_Porezna
                                 new XElement(ns + "Zaglavlje",
                                     new XElement(ns + "Razdoblje",
                                         new XElement(ns + "DatumOd", datumOdBox),
-                                        new XElement(ns + "DatumDo", datumOdBox)),
+                                        new XElement(ns + "DatumDo", datumDoBox)),
                                     new XElement(ns + "Obveznik",
                                         new XElement(ns + "OIB", citaj["oib"].ToString()),
                                         new XElement(ns + "Ime", citaj["ime"].ToString().ToUpper()),
@@ -124,7 +124,7 @@ namespace Ura_Porezna
                 bazaspoj.Close();
             }
         }
-        public void PopuniUkupno()
+        public void PopuniUkupno(string datumOdBox, string datumDoBox)
         {
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 

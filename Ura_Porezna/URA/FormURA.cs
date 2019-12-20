@@ -8,8 +8,8 @@ namespace Ura_Porezna
 {
     public partial class FormURA : Form
     {
-        protected string datumOdBox;
-        protected string datumDoBox;
+        private string datumOdBox;
+        private string datumDoBox;
         protected string put;
         public FormURA()
         {
@@ -121,8 +121,8 @@ namespace Ura_Porezna
             BrisiDatagrid();
 
             PopuniXml xmlPopuna = new PopuniXml();
-            xmlPopuna.PopuniObrazac();
-            xmlPopuna.PopuniUkupno();
+            xmlPopuna.PopuniObrazac(datumOdBox, datumDoBox);
+            xmlPopuna.PopuniUkupno(datumOdBox, datumDoBox);
         }
         //otvori csv
         private void button2_Click(object sender, EventArgs e)
