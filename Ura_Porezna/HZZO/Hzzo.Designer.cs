@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_ucitaj = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new CustomDataGridView();
             this.comboGodine = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_ucitaj;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private CustomDataGridView dataGridView1;
         private System.Windows.Forms.ComboBox comboGodine;
         private System.Windows.Forms.Label label1;
     }
