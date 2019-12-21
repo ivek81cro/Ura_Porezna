@@ -13,8 +13,6 @@ namespace Ura_Porezna
     {
         public static void Otvori(ref string put)
         {
-            ConvertXlsToCsv.Convert(ref put);
-
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
             string query = string.Format("SELECT Rbr FROM poreznaura.ira ORDER BY Rbr DESC LIMIT 1;");
@@ -23,6 +21,10 @@ namespace Ura_Porezna
             MySqlCommand cmd = new MySqlCommand(query, con);
             Object result = cmd.ExecuteScalar();
             int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
+            
+            ConvertXlsToCsv.Convert(ref put, zadnjiRed); 
+            
+            if (put == null) return;
 
             query = "INSERT INTO poreznaura.ira (Rbr, datum_rn, br_rn, kupac, " +
                 "iznos_uk, osn0, osn5, pdv5, osn13, " +
