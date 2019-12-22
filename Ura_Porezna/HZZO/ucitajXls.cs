@@ -11,7 +11,7 @@ namespace Ura_Porezna
         string put;
         public void Otvori(int godina, CustomDataGridView dataGridView1)
         {
-            ConvertXlsToCsv.Convert(ref put);
+            ConvertXlsToCsv.Convert(ref put, 0);
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);

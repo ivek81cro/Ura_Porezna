@@ -7,10 +7,10 @@ namespace Ura_Porezna
 {
     class ConvertXlsToCsv
     {
-        public static void Convert(ref string put)
+        public static void Convert(ref string put, int zadnjiRed)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "All Files (*.xls)|*.xls";
+            choofdlog.Filter = "Xls Files *.xls|*.xls|Csv files *.csv|*.csv";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
 
@@ -23,6 +23,8 @@ namespace Ura_Porezna
                 MessageBox.Show("Nije odabran file");
                 return;
             }
+
+            if (put.Contains(".csv")) return;
 
             FileStream stream = File.Open(put, FileMode.Open, FileAccess.Read);
             IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
@@ -50,6 +52,5 @@ namespace Ura_Porezna
             csv.Write(csvData);
             csv.Close();
         }
-    }
-        
+    }        
 }

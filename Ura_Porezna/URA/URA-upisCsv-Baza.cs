@@ -9,8 +9,6 @@ namespace Ura_Porezna
     {
         public void Upis(string put)
         {
-            ConvertXlsToCsv.Convert(ref put);
-
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
             string query = string.Format("SELECT Rbr FROM poreznaura.ura ORDER BY Rbr DESC LIMIT 1;");
@@ -20,6 +18,9 @@ namespace Ura_Porezna
             Object result = cmd.ExecuteScalar();
             int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
            
+            ConvertXlsToCsv.Convert(ref put, zadnjiRed);
+
+            if (put == null) return;
 
             query = string.Format("INSERT INTO poreznaura.ura (Rbr, Datum_racuna, Broj_racuna, Za_uplatu, " +
                 "Naziv_dobavljaca, Sjediste_dobavljaca, OIB, Iznos_s_porezom, Porezna_osn0, " +
