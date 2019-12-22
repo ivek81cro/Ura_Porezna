@@ -59,8 +59,10 @@ namespace Ura_Porezna
 
         void obojiRedove()
         {
+            double razlika = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
+                
                 if (row.Cells[3].FormattedValue.ToString().Contains("HZZO"))
                 {
                     if (Convert.ToInt32(row.Cells[13].Value) != 0)
@@ -71,9 +73,16 @@ namespace Ura_Porezna
                     {
                         row.DefaultCellStyle.BackColor = Color.FromArgb(204, 255, 153);
                     }
+                    else
+                    {
+                        if (Convert.ToInt32(row.Cells[13].Value) == 0)
+                        {
+                            razlika += Convert.ToDouble(row.Cells[14].Value) - Convert.ToDouble(row.Cells[15].Value);
+                        }
+                    }
                 }               
             }
-            
+            label20.Text = "Razlika-HZZO: " + Math.Round(razlika,2).ToString();
         }    
 
         void zbroji()
