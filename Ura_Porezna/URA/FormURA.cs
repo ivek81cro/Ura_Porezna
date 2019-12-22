@@ -44,16 +44,24 @@ namespace Ura_Porezna
         }
         void BrisiBazu()
         {
-            string constring = "datasource=localhost;port=3306;username=root;password=pass123";
-            string upitBrisi = "DELETE FROM poreznaura.ura WHERE Rbr<>100000;";
-            MySqlConnection bazaspoj;
-            MySqlCommand bazazapovjed;
-            MySqlDataReader citaj;
-            bazaspoj = new MySqlConnection(constring);
-            bazazapovjed = new MySqlCommand(upitBrisi, bazaspoj);
-            bazaspoj.Open();
-            citaj = bazazapovjed.ExecuteReader();
-            bazaspoj.Close();
+            DialogResult result = MessageBox.Show("Stvarno želite obrisati cijelu tablicu URA?", "Potvrda", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string constring = "datasource=localhost;port=3306;username=root;password=pass123";
+                string upitBrisi = "DELETE FROM poreznaura.ura WHERE Rbr<>100000;";
+                MySqlConnection bazaspoj;
+                MySqlCommand bazazapovjed;
+                MySqlDataReader citaj;
+                bazaspoj = new MySqlConnection(constring);
+                bazazapovjed = new MySqlCommand(upitBrisi, bazaspoj);
+                bazaspoj.Open();
+                citaj = bazazapovjed.ExecuteReader();
+                bazaspoj.Close();
+            }
+            else
+            {
+                return;
+            }
         }
         void zbroji()
         {
