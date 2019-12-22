@@ -15,7 +15,7 @@ namespace Ura_Porezna
 
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
-            string query = String.Format("INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
+            string query = string.Format("INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
                 "datumRn, izvor, opis, iznos, placeniIznos) " +
                 "VALUES (@datum, @dokument, @brojRn, @datumRn, @izvor, " +
                 "@opis, @iznos, @placeniIznos);");

@@ -19,7 +19,6 @@ namespace Ura_Porezna
                     DataSet ds = new DataSet();
                     adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
-                    conn.Close();
                 }
             }
             zbrojiTroskove();
