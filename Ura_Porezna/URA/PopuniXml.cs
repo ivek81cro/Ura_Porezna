@@ -23,8 +23,7 @@ namespace Ura_Porezna
             savFile.Filter = "XML|*.xml";
             if (savFile.ShowDialog() == DialogResult.OK)
             {
-                put = savFile.FileName;
-                constring = "datasource=localhost;port=3306;username=root;password=pass123";
+                put = savFile.FileName;                
                 upit = "SELECT * FROM poreznaura.obveznik;";
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upit, bazaspoj);
@@ -100,6 +99,8 @@ namespace Ura_Porezna
                 XDocument doc = XDocument.Load(put);
                 while (citaj.Read())
                 {
+                    double iznosSporezom = Convert.ToDouble(citaj["Porezna_osn5"]) + Convert.ToDouble(citaj["Porezna_osn13"]) + 
+                        Convert.ToDouble(citaj["Porezna_osn25"]);
                     doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Racuni").Add(new XElement(ns + "R",
                                                         new XElement(ns + "R1", citaj["Rbr"].ToString()),
                                                         new XElement(ns + "R2", citaj["Broj_racuna"].ToString()),
@@ -111,7 +112,7 @@ namespace Ura_Porezna
                                                         new XElement(ns + "R8", citaj["Porezna_osn5"]),
                                                         new XElement(ns + "R9", citaj["Porezna_osn13"]),
                                                         new XElement(ns + "R10", citaj["Porezna_osn25"]),
-                                                        new XElement(ns + "R11", citaj["Iznos_s_porezom"]),
+                                                        new XElement(ns + "R11", iznosSporezom),
                                                         new XElement(ns + "R12", citaj["Ukupni_pretporez"]),
                                                         new XElement(ns + "R13", citaj["por5"]),
                                                         new XElement(ns + "R14", "0.00"),
@@ -198,7 +199,7 @@ namespace Ura_Porezna
                                                 new XElement(ns + "U8", Math.Round(osn5, 2)),
                                                 new XElement(ns + "U9", Math.Round(osn13, 2)),
                                                 new XElement(ns + "U10", Math.Round(osn25, 2)),
-                                                new XElement(ns + "U11", Math.Round(ukIznos, 2)),
+                                                new XElement(ns + "U11", Math.Round(osnUk, 2)),
                                                 new XElement(ns + "U12", Math.Round(pretPorUk, 2)),
                                                 new XElement(ns + "U13", Math.Round(por5, 2)),
                                                 new XElement(ns + "U14", "0.00"),
