@@ -61,14 +61,17 @@ namespace Ura_Porezna
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if (Convert.ToInt32(row.Cells[4].Value) == Convert.ToInt32(row.Cells[14].Value))
+                if (row.Cells[3].FormattedValue.ToString().Contains("HZZO"))
                 {
-                    row.DefaultCellStyle.BackColor = Color.FromArgb(204, 255, 153);
-                }
-                if (Convert.ToInt32(row.Cells[13].Value) != 0)
-                {
-                    row.DefaultCellStyle.BackColor = Color.MistyRose;
-                }
+                    if (Convert.ToInt32(row.Cells[13].Value) != 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.MistyRose;
+                    }
+                    if (Convert.ToInt32(row.Cells[14].Value) == Convert.ToInt32(row.Cells[15].Value))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(204, 255, 153);
+                    }
+                }               
             }
             
         }    
@@ -227,6 +230,12 @@ namespace Ura_Porezna
             filterPodataka();
             zbroji();
             obojiRedove();
+        }
+
+        private void btnKonsolid_Click(object sender, EventArgs e)
+        {
+            Konsolidiraj kons = new Konsolidiraj();
+            kons.Pokreni();
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Ura_Porezna
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
             string query = string.Format("INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
-                "datumRn, izvor, opis, iznos, placeniIznos) " +
+                "datumRn, izvor, opis, iznos, placeniIznos, id) " +
                 "VALUES (@datum, @dokument, @brojRn, @datumRn, @izvor, " +
-                "@opis, @iznos, @placeniIznos);");
+                "@opis, @iznos, @placeniIznos, @identifikator);");
             con.Open();
             int rowsAffected = 0;
             try
@@ -32,6 +32,7 @@ namespace Ura_Porezna
                         continue;
                     if (Int32.Parse(temp[2].Split('/')[1]) != godina)
                         continue;
+                    string identifikator = temp[0] + text[1].Split('-')[2] + text[4].Split('/')[0];
                     int brRn = Int32.Parse(temp[0]);
 
                     MySqlCommand cmd = new MySqlCommand(query, con);
@@ -44,7 +45,7 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@opis", text[5].ToString().Trim());
                     cmd.Parameters.AddWithValue("@iznos", Convert.ToDouble(text[6].ToString().Trim()));
                     cmd.Parameters.AddWithValue("@placeniIznos", Convert.ToDouble(text[7].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@godina", godina);
+                    cmd.Parameters.AddWithValue("@identifikator", identifikator);
 
                     rowsAffected = cmd.ExecuteNonQuery();
                 }
