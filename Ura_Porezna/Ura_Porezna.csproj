@@ -129,6 +129,7 @@
     <Compile Include="IRA\Filter.cs" />
     <Compile Include="IRA\Ispis.cs" />
     <Compile Include="IRA\Konsolidiraj.cs" />
+    <Compile Include="IRA\Oboji_Razlika_Hzzo.cs" />
     <Compile Include="IRA\OtvoriXls.cs" />
     <Compile Include="URA\CustomDataGridView.cs">
       <SubType>Component</SubType>
