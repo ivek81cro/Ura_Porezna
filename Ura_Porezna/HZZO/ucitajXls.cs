@@ -47,7 +47,7 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@placeniIznos", Convert.ToDouble(text[7].ToString().Trim()));
                     cmd.Parameters.AddWithValue("@identifikator", identifikator);
 
-                    rowsAffected = cmd.ExecuteNonQuery();
+                    rowsAffected += cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -55,21 +55,12 @@ namespace Ura_Porezna
                 MessageBox.Show(ex.Message);
             }
             finally
-            {
-                query = string.Format("SELECT * FROM poreznaura.hzzo");
-                using (MySqlConnection conn = new MySqlConnection(constring))
-                {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
-                    {
-                        DataSet ds = new DataSet();
-                        adapter.Fill(ds);
-                        dataGridView1.DataSource = ds.Tables[0];
-                    }
-                }
+            {                
                 query = string.Format("CALL poreznaura.placeno();");
                 MySqlCommand call = new MySqlCommand(query, con);
                 call.ExecuteNonQuery();
                 con.Close();
+                MessageBox.Show($"Unešeno je {rowsAffected} redova u bazu");
             }
         }
     }

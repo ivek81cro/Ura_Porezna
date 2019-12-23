@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace Ura_Porezna
@@ -18,6 +20,21 @@ namespace Ura_Porezna
             int godina = Int32.Parse(comboGodine.Text);
             UcitajXls citaj = new UcitajXls();
             citaj.Otvori(godina, dataGridView1);
-        }        
+        }
+
+        private void btnIspis_Click(object sender, EventArgs e)
+        {
+            string constring = "datasource=localhost;port=3306;username=root;password=pass123";
+            string query = string.Format("SELECT * FROM poreznaura.hzzo");
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+        }
     }
 }
