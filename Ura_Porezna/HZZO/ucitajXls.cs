@@ -37,7 +37,7 @@ namespace Ura_Porezna
 
                     MySqlCommand cmd = new MySqlCommand(query, con);
 
-                    cmd.Parameters.AddWithValue("@datum", text[0].ToString().Substring(0, 10));
+                    cmd.Parameters.AddWithValue("@datum", DateTime.ParseExact(text[0].ToString().Substring(0, 10), "dd.MM.yyyy", null));
                     cmd.Parameters.AddWithValue("@dokument", text[1].ToString());
                     cmd.Parameters.AddWithValue("@brojRn", brRn);
                     cmd.Parameters.AddWithValue("@datumRn", text[3].ToString().Substring(0, 10));
