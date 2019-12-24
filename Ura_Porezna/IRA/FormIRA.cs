@@ -49,7 +49,7 @@ namespace Ura_Porezna
             if (result == DialogResult.Yes)
             {
                 string constring = "datasource=localhost;port=3306;username=root;password=pass123";
-                string upitBrisi = "DELETE FROM poreznaura.ira WHERE Rbr<>100000;";
+                string upitBrisi = string.Format("DELETE FROM poreznaura.ira WHERE Rbr<>100000;");
                 MySqlConnection bazaspoj;
                 MySqlCommand bazazapovjed;
                 MySqlDataReader citaj;
