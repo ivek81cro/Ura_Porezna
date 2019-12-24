@@ -118,16 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label12.Text" xml:space="preserve">
-    <value>Iz Eskulapa napraviti eksport URA-e u .odf, otvoriti tu datoteku u OpenOffice Calc i 
-Save As .csv (četvrti od dole) i zapamti lokaciju,
-odabrati u prvoj kučici Unicode (UTF-8)
- i u drugoj kučici točku-zrez (;) za separator. 
-Zatim kliknuti Otvori csv i odabrati datoteku.
-Sačekati dok se ne pojavi poruka Unešeno, 
-kliknuti OK. Provjeriti datume Od, Do.
-Kliknuti Kreiraj XML, upisati naziv i zapamtiti gdje je spremljeno. 
-Pojaviti će se ukupni iznosi na prozoru.
-Taj zadnji dokument učitat na e-poreznu
+    <value>ESKULAP: 
+-Otvori Knjigu ulaznih računa, izvezi sve u excel (*xls), u naziv stavi UAR i spremi.
+
+OVAJ PROZOR: 
+-Klikni Otvori dokument, idi u folder gdje je URA spremljena i odaberi taj dokument, klikni Otvori.
+Provjeri datume i klikni Kreiraj XML, nazovi dokument proizvoljno, spremi ga i spreman je za upload na e-Poreznu
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

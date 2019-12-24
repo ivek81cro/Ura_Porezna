@@ -74,7 +74,7 @@
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 271);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -84,7 +84,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(9, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 38);
             this.button3.TabIndex = 12;
@@ -95,11 +95,11 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(100, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 38);
+            this.button2.Size = new System.Drawing.Size(103, 38);
             this.button2.TabIndex = 11;
-            this.button2.Text = "Otvori csv";
+            this.button2.Text = "Otvori dokument za  uvoz podataka";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -128,7 +128,7 @@
             this.datumDo.CustomFormat = "dd-MM-yyyy";
             this.datumDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datumDo.Location = new System.Drawing.Point(81, 84);
-            this.datumDo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datumDo.Margin = new System.Windows.Forms.Padding(2);
             this.datumDo.Name = "datumDo";
             this.datumDo.Size = new System.Drawing.Size(92, 20);
             this.datumDo.TabIndex = 14;
@@ -139,7 +139,7 @@
             this.datumOd.CustomFormat = "dd-MM-yyyy";
             this.datumOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datumOd.Location = new System.Drawing.Point(81, 62);
-            this.datumOd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datumOd.Margin = new System.Windows.Forms.Padding(2);
             this.datumOd.Name = "datumOd";
             this.datumOd.Size = new System.Drawing.Size(92, 20);
             this.datumOd.TabIndex = 13;
@@ -148,7 +148,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(662, 10);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(88, 34);
             this.button4.TabIndex = 19;
@@ -258,7 +258,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(662, 50);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 38);
             this.button1.TabIndex = 29;
@@ -401,16 +401,16 @@
             // 
             // textFilter
             // 
-            this.textFilter.Location = new System.Drawing.Point(203, 14);
-            this.textFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textFilter.Location = new System.Drawing.Point(215, 14);
+            this.textFilter.Margin = new System.Windows.Forms.Padding(2);
             this.textFilter.Name = "textFilter";
             this.textFilter.Size = new System.Drawing.Size(130, 20);
             this.textFilter.TabIndex = 42;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(337, 10);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Location = new System.Drawing.Point(349, 10);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(67, 27);
             this.button5.TabIndex = 43;
@@ -467,7 +467,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormIRA";
             this.Text = "IRA";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

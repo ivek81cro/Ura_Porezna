@@ -144,7 +144,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 47);
             this.button2.TabIndex = 9;
-            this.button2.Text = "Otvori csv";
+            this.button2.Text = "Otvori dokument za uvoz podataka";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -217,7 +217,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(9, 188);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(400, 130);
+            this.label12.Size = new System.Drawing.Size(534, 78);
             this.label12.TabIndex = 17;
             this.label12.Text = resources.GetString("label12.Text");
             // 
@@ -282,9 +282,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(575, 240);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 13);
+            this.label16.Size = new System.Drawing.Size(152, 13);
             this.label16.TabIndex = 26;
-            this.label16.Text = "Dobavljač-filter";
+            this.label16.Text = "Dobavljač-filter za pojedinačno";
             // 
             // datumOd
             // 
