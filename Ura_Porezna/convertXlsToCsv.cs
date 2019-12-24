@@ -10,7 +10,7 @@ namespace Ura_Porezna
         public static void Convert(ref string put, int zadnjiRed)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "Xls Files *.xls|*.xls|Csv files *.csv|*.csv";
+            choofdlog.Filter = "Xls Files *.xls|*.xls|Xlsx Files *.xlsx|*.xlsx|Csv files *.csv|*.csv";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
 
@@ -27,7 +27,11 @@ namespace Ura_Porezna
             if (put.Contains(".csv")) return;
 
             FileStream stream = File.Open(put, FileMode.Open, FileAccess.Read);
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+
+            //IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream); ->old.xls
+
+            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+
             DataSet result = excelReader.AsDataSet();
             excelReader.Close();
 

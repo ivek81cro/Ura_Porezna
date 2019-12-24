@@ -41,7 +41,7 @@ namespace Ura_Porezna
                 foreach (string line in lines)
                 {
                     string[] text = line.Split(';', '\n');
-                    if (text[0] == "Rbr" || text[0] == "") continue;
+                    if (text[0] == "" || !Char.IsDigit(text[0],0)) continue;
                     DateTime dt = DateTime.Parse(text[5]);
                     text[5] = dt.ToString("yyyy-MM-dd");
                     int trenutniRed = Int32.Parse(text[0]);
