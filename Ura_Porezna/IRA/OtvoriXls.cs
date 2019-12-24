@@ -64,7 +64,7 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@Pdv_uk", Convert.ToDouble(text[24].ToString().Trim()));
                     cmd.Parameters.AddWithValue("@storno_iz", Convert.ToInt32(text[4].ToString().Trim()));
 
-                    rowsAffected = cmd.ExecuteNonQuery();
+                    rowsAffected += cmd.ExecuteNonQuery();
 
                 }
             }
@@ -73,7 +73,7 @@ namespace Ura_Porezna
                 MessageBox.Show(ex.Message);
             }
             con.Close();
-            MessageBox.Show("Unešeno");
+            MessageBox.Show($"Unešeno {rowsAffected} redova");
         }
     }
 }

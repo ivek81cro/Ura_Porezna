@@ -33,6 +33,9 @@
             this.comboGodine = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnIspis = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.datumPick = new System.Windows.Forms.DateTimePicker();
+            this.btnFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +88,45 @@
             this.btnIspis.UseVisualStyleBackColor = true;
             this.btnIspis.Click += new System.EventHandler(this.btnIspis_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 55);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Datum placanja:";
+            // 
+            // datumPick
+            // 
+            this.datumPick.CustomFormat = "dd-MM-yyyy";
+            this.datumPick.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datumPick.Location = new System.Drawing.Point(100, 52);
+            this.datumPick.Margin = new System.Windows.Forms.Padding(2);
+            this.datumPick.Name = "datumPick";
+            this.datumPick.Size = new System.Drawing.Size(103, 20);
+            this.datumPick.TabIndex = 17;
+            this.datumPick.Value = new System.DateTime(2019, 2, 13, 21, 5, 21, 0);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Location = new System.Drawing.Point(208, 51);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnFilter.TabIndex = 19;
+            this.btnFilter.Text = "Filtriraj";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
             // Hzzo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 411);
+            this.Controls.Add(this.btnFilter);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.datumPick);
             this.Controls.Add(this.btnIspis);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboGodine);
@@ -111,5 +148,8 @@
         private System.Windows.Forms.ComboBox comboGodine;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnIspis;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker datumPick;
+        private System.Windows.Forms.Button btnFilter;
     }
 }

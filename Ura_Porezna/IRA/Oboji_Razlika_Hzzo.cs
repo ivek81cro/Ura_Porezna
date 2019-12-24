@@ -18,7 +18,7 @@ namespace Ura_Porezna
                     {
                         row.DefaultCellStyle.BackColor = Color.MistyRose;
                     }
-                    if (Convert.ToInt32(row.Cells[14].Value) == Convert.ToInt32(row.Cells[15].Value))
+                    if (Convert.ToInt32(row.Cells[14].Value) == Convert.ToInt32(row.Cells[15].Value) && Convert.ToInt32(row.Cells[14].Value)!=0)
                     {
                         row.DefaultCellStyle.BackColor = Color.FromArgb(204, 255, 153);
                     }

@@ -36,5 +36,20 @@ namespace Ura_Porezna
                 }
             }
         }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string constring = "datasource=localhost;port=3306;username=root;password=pass123";
+            string query = string.Format("SELECT * FROM poreznaura.hzzo WHERE datum='{0}';", datumPick.Value.ToString("yyyy-MM-dd"));
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+            }
+        }
     }
 }

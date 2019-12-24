@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
@@ -10,9 +12,20 @@ namespace Ura_Porezna
             MySqlConnection con = new MySqlConnection(constring);
             string query = string.Format("CALL poreznaura.konsolidiraj_prvi();");
             con.Open();
-            MySqlCommand call = new MySqlCommand(query, con);
-            call.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+                MySqlCommand call = new MySqlCommand(query, con);
+                call.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                MessageBox.Show("Izvršeno","Konsolidacija", MessageBoxButtons.OK ,MessageBoxIcon.Information);
+                con.Close();
+            }
         }
     }
 }
