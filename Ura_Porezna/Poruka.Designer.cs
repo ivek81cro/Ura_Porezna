@@ -35,20 +35,22 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(62, 37);
+            this.label1.Location = new System.Drawing.Point(101, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 40);
+            this.label1.Size = new System.Drawing.Size(224, 80);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Sačekati dok se proces završi (zna potrajati)\r\nPoruka će se sama zatvoriti\r\n";
+            this.label1.Text = "Sačekati dok se proces završi\r\n (zna potrajati nekoliko minuta)\r\nPoruka će se sam" +
+    "a zatvoriti \r\nkada proces bude gotov.\r\n";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Poruka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 129);
+            this.ClientSize = new System.Drawing.Size(429, 155);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Poruka";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sačekati";

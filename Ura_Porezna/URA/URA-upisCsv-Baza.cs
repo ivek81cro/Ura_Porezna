@@ -17,7 +17,10 @@ namespace Ura_Porezna
             MySqlCommand cmd = new MySqlCommand(query, con);
             Object result = cmd.ExecuteScalar();
             int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
-           
+
+            Poruka p = new Poruka();
+            p.Prikazi();
+
             ConvertXlsToCsv.Convert(ref put, zadnjiRed);
 
             if (put == null) return;
@@ -76,6 +79,7 @@ namespace Ura_Porezna
                 MessageBox.Show(ex.Message);
             }
             con.Close();
+            p.Zatvori();
         }
     }
 }

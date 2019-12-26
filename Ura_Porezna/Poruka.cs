@@ -16,5 +16,15 @@ namespace Ura_Porezna
         {
             InitializeComponent();
         }
+
+        public void Prikazi()
+        {
+            this.Show();
+        }
+
+        public void Zatvori()
+        {
+            this.Close();
+        }
     }
 }
