@@ -119,7 +119,7 @@
   </resheader>
   <data name="label12.Text" xml:space="preserve">
     <value>ESKULAP: 
--Otvori Knjigu ulaznih računa, izvezi sve u excel (*xls), u naziv stavi UAR i spremi.
+-Otvori Knjigu ulaznih računa, izvezi sve u excel (*xls), u naziv stavi URA i spremi.
 
 OVAJ PROZOR: 
 -Klikni Otvori dokument, idi u folder gdje je URA spremljena i odaberi taj dokument, klikni Otvori.
