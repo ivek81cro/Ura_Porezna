@@ -27,11 +27,15 @@ namespace Ura_Porezna
             if (put.Contains(".csv")) return;
 
             FileStream stream = File.Open(put, FileMode.Open, FileAccess.Read);
-
-            //IExcelDataReader excelReader = ExcelReaderFactory.CreateBinaryReader(stream); ->old.xls
-
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
+            IExcelDataReader excelReader;
+            try
+            {
+                excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
+            }
+            catch
+            {
+                excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
+            }
             DataSet result = excelReader.AsDataSet();
             excelReader.Close();
 
@@ -50,7 +54,14 @@ namespace Ura_Porezna
                 row_no++;
                 csvData += "\n";
             }
-            put = put.Replace("xls", "csv");
+            if (put.Contains(".xlsx"))
+            {
+                put = put.Replace("xlsx", "csv");
+            }
+            else
+            {
+                put = put.Replace("xls", "csv");
+            }
             string output = put; // define your own filepath & filename
             StreamWriter csv = new StreamWriter(@output, false);
             csv.Write(csvData);
