@@ -82,5 +82,17 @@ namespace Ura_Porezna
             hzzo = null;
             //throw new NotImplementedException();
         }
+
+        private void backupToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BackupBaze bu = new BackupBaze();
+            bu.Backup();
+        }
+
+        private void restoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackupBaze re = new BackupBaze();
+            re.Restore();
+        }
     }
 }
