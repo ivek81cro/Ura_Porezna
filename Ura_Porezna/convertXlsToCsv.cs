@@ -30,6 +30,7 @@ namespace Ura_Porezna
             IExcelDataReader excelReader;
             try
             {
+                //old xls format 93-07
                 excelReader = ExcelReaderFactory.CreateBinaryReader(stream);
             }
             catch
