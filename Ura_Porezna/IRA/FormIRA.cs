@@ -14,9 +14,9 @@ namespace Ura_Porezna
         public FormIRA()
         {            
             InitializeComponent();
-            var datumPocetni = DateTime.Now;
-            datumOd.Value = datumPocetni.AddMonths(-1).AddDays(-DateTime.Now.Day+1);
-            datumDo.Value = datumPocetni.AddMonths(0).AddDays(-DateTime.Now.Day);
+            var datumPocetni = DateTime.Now.AddMonths(-1);
+            datumOd.Value = new DateTime(datumPocetni.Year, datumPocetni.Month, 1);
+            datumDo.Value = datumOd.Value.AddMonths(1).AddDays(-1);
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             datumOd.TextChanged += DatumOd_TextChanged;
