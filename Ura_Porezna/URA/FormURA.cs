@@ -142,8 +142,6 @@ namespace Ura_Porezna
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
             ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
-
-            MessageBox.Show("Unešeno");
         }
         //brisi bazu
         private void button3_Click(object sender, EventArgs e)

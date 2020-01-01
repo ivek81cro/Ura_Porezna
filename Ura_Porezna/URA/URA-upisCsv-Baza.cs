@@ -80,6 +80,7 @@ namespace Ura_Porezna
             }
             con.Close();
             p.Zatvori();
+            MessageBox.Show($"Unešeno {rowsAffected} novih redaka.", "Unos", MessageBoxButtons.OK , MessageBoxIcon.Information);
         }
     }
 }
