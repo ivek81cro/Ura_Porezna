@@ -77,7 +77,7 @@ namespace Ura_Porezna
             }
             con.Close();
             p.Zatvori();
-            MessageBox.Show($"Unešeno {rowsAffected} redova");
+            MessageBox.Show($"Unešeno {rowsAffected} novih redova.","Unos",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }
