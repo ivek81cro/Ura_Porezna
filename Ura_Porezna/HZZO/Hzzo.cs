@@ -13,6 +13,7 @@ namespace Ura_Porezna
             for (int i =0; i<20; i++)
                 comboGodine.Items.Add(DateTime.Now.Year-i);
             comboGodine.Text = "2019";
+            datumPick.Value = DateTime.Now;
         }
 
         private void btn_ucitaj_Click(object sender, EventArgs e)

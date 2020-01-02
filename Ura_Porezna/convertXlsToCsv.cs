@@ -10,7 +10,7 @@ namespace Ura_Porezna
         public static void Convert(ref string put, int zadnjiRed)
         {
             OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "Xls Files *.xls|*.xls|Xlsx Files *.xlsx|*.xlsx|Csv files *.csv|*.csv";
+            choofdlog.Filter = "Xlsx Files *.xlsx|*.xlsx|Xls Files *.xls|*.xls|Csv files *.csv|*.csv";
             choofdlog.FilterIndex = 1;
             choofdlog.Multiselect = false;
 
