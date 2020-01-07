@@ -99,8 +99,8 @@ namespace Ura_Porezna
                 XDocument doc = XDocument.Load(put);
                 while (citaj.Read())
                 {
-                    double iznosSporezom = Convert.ToDouble(citaj["Porezna_osn5"]) + Convert.ToDouble(citaj["Porezna_osn13"]) + 
-                        Convert.ToDouble(citaj["Porezna_osn25"]);
+                    double iznosSporezom = Math.Round(Convert.ToDouble(citaj["Porezna_osn5"]) + Convert.ToDouble(citaj["Porezna_osn13"]) +
+                        Convert.ToDouble(citaj["Porezna_osn25"]) + Convert.ToDouble(citaj["Ukupni_pretporez"]), 2);
                     doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Racuni").Add(new XElement(ns + "R",
                                                         new XElement(ns + "R1", citaj["Rbr"].ToString()),
                                                         new XElement(ns + "R2", citaj["Broj_racuna"].ToString()),
