@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Ura_Porezna
@@ -11,13 +13,24 @@ namespace Ura_Porezna
         {
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
-            string query = string.Format("SELECT Rbr FROM poreznaura.ura ORDER BY Rbr DESC LIMIT 1;");
+            string query = string.Format("SELECT Rbr, Datum_racuna FROM poreznaura.ura ORDER BY Rbr DESC LIMIT 1;");
             con.Open();
-
+            
             MySqlCommand cmd = new MySqlCommand(query, con);
-            Object result = cmd.ExecuteScalar();
-            int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
+            var dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            var rows = dt.AsEnumerable().ToArray();
+            int zadnjiRed=0;
+            int godina=0;
+            try
+            {
+                zadnjiRed = Convert.ToInt32(rows[0]["Rbr"]) == 0 ? -1 : Convert.ToInt32(rows[0]["Rbr"]);
+                godina = Convert.ToInt32(rows[0]["Datum_racuna"].ToString().Substring(0, 4));
+            }
+            catch
+            {
 
+            }
             Poruka p = new Poruka();
             p.Prikazi();
 
@@ -71,7 +84,7 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@storno", text[5].ToString().Trim());
                     cmd.Parameters.AddWithValue("@odobr", text[37].ToString().Trim());
 
-                    rowsAffected = cmd.ExecuteNonQuery();
+                    rowsAffected += cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
