@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using System.Data;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Ura_Porezna
@@ -64,7 +65,7 @@ namespace Ura_Porezna
                 put = put.Replace("xls", "csv");
             }
             string output = put; // define your own filepath & filename
-            StreamWriter csv = new StreamWriter(@output, false);
+            StreamWriter csv = new StreamWriter(@output, false, Encoding.UTF8);
             csv.Write(csvData);
             csv.Close();
         }

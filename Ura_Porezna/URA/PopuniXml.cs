@@ -187,6 +187,7 @@ namespace Ura_Porezna
             //obilazak gubitka u lipama radi strojnog racunanja
             //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
             double pretPorUk = por5 + por13 + por25;
+            double ukupnoSPdv = pretPorUk + osnUk;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
@@ -199,7 +200,7 @@ namespace Ura_Porezna
                                                 new XElement(ns + "U8", Math.Round(osn5, 2)),
                                                 new XElement(ns + "U9", Math.Round(osn13, 2)),
                                                 new XElement(ns + "U10", Math.Round(osn25, 2)),
-                                                new XElement(ns + "U11", Math.Round(osnUk, 2)),
+                                                new XElement(ns + "U11", Math.Round(ukupnoSPdv, 2)),
                                                 new XElement(ns + "U12", Math.Round(pretPorUk, 2)),
                                                 new XElement(ns + "U13", Math.Round(por5, 2)),
                                                 new XElement(ns + "U14", "0.00"),
