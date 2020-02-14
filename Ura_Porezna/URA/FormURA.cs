@@ -129,8 +129,8 @@ namespace Ura_Porezna
             BrisiDatagrid();
 
             PopuniXml xmlPopuna = new PopuniXml();
-            xmlPopuna.PopuniObrazac(datumOdBox, datumDoBox);
-            xmlPopuna.PopuniUkupno(datumOdBox, datumDoBox);
+            if(xmlPopuna.PopuniObrazac(datumOdBox, datumDoBox))
+                xmlPopuna.PopuniUkupno(datumOdBox, datumDoBox);
         }
         //otvori csv
         private void button2_Click(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace Ura_Porezna
 {
     class PopuniXml : FormURA
     {
-        public void PopuniObrazac(string datumOdBox, string datumDoBox)
+        public bool PopuniObrazac(string datumOdBox, string datumDoBox)
         {
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             string upit;
@@ -123,6 +123,11 @@ namespace Ura_Porezna
                 }
                 doc.Save(put);
                 bazaspoj.Close();
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public void PopuniUkupno(string datumOdBox, string datumDoBox)
