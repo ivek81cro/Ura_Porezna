@@ -59,7 +59,7 @@ namespace Ura_Porezna
                     if (zadnjiRed > 0 && zadnjiRed >= trenutniRed) continue;
 
 
-                    DateTime dt1 = DateTime.Parse(text[2]);
+                    DateTime dt1 = DateTime.Parse(text[2]);//Datum koji se uzima sa csv
                     text[6] = dt1.ToString("yyyy-MM-dd");
 
                     cmd = new MySqlCommand(query, con);

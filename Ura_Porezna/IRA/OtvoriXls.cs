@@ -57,14 +57,14 @@ namespace Ura_Porezna
                     cmd.Parameters.AddWithValue("@Broj_racuna", text[2].ToString().Trim());
                     cmd.Parameters.AddWithValue("@Kupac", text[8].ToString().Trim());
                     cmd.Parameters.AddWithValue("@Iznos", Convert.ToDouble(text[10].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Osn0", Convert.ToDouble(text[13].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Osn5", Convert.ToDouble(text[14].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Pdv5", Convert.ToDouble(text[15].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Osn13", Convert.ToDouble(text[18].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Pdv13", Convert.ToDouble(text[19].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Osn25", Convert.ToDouble(text[22].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Pdv25", Convert.ToDouble(text[23].ToString().Trim()));
-                    cmd.Parameters.AddWithValue("@Pdv_uk", Convert.ToDouble(text[24].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Osn0", Convert.ToDouble(text[14].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Osn5", Convert.ToDouble(text[15].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Pdv5", Convert.ToDouble(text[16].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Osn13", Convert.ToDouble(text[19].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Pdv13", Convert.ToDouble(text[20].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Osn25", Convert.ToDouble(text[23].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Pdv25", Convert.ToDouble(text[24].ToString().Trim()));
+                    cmd.Parameters.AddWithValue("@Pdv_uk", Convert.ToDouble(text[25].ToString().Trim()));
                     cmd.Parameters.AddWithValue("@storno_iz", Convert.ToInt32(text[4].ToString().Trim()));
 
                     rowsAffected += cmd.ExecuteNonQuery();
