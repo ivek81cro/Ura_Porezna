@@ -141,6 +141,15 @@ namespace Ura_Porezna
             {
                 ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
             }
+            //double ukIznosBez0 = 0.00;
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //{
+            //    ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
+            //    if (Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString()) > 0)
+            //    {
+            //        ukIznos -= Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
+            //    }
+            //}
             double neoporezivo = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
@@ -169,7 +178,7 @@ namespace Ura_Porezna
                 osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString());
             }
             label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osnUk = osn5 + osn13 + osn25;
+            double osnUk = osn5 + osn13 + osn25 + neoporezivo;
             label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por5 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -192,7 +201,7 @@ namespace Ura_Porezna
             //obilazak gubitka u lipama radi strojnog racunanja
             //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
             double pretPorUk = por5 + por13 + por25;
-            double ukupnoSPdv = pretPorUk + osnUk;
+            double ukupnoSPdv = neoporezivo + osnUk;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
@@ -205,7 +214,7 @@ namespace Ura_Porezna
                                                 new XElement(ns + "U8", Math.Round(osn5, 2)),
                                                 new XElement(ns + "U9", Math.Round(osn13, 2)),
                                                 new XElement(ns + "U10", Math.Round(osn25, 2)),
-                                                new XElement(ns + "U11", Math.Round(ukupnoSPdv, 2)),
+                                                new XElement(ns + "U11", Math.Round(ukIznos, 2)),
                                                 new XElement(ns + "U12", Math.Round(pretPorUk, 2)),
                                                 new XElement(ns + "U13", Math.Round(por5, 2)),
                                                 new XElement(ns + "U14", "0.00"),
