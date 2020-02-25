@@ -139,21 +139,13 @@ namespace Ura_Porezna
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
+                ukIznos += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString()),2);
             }
-            //double ukIznosBez0 = 0.00;
-            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            //{
-            //    ukIznos += Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString());
-            //    if (Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString()) > 0)
-            //    {
-            //        ukIznos -= Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
-            //    }
-            //}
+            
             double neoporezivo = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                neoporezivo += Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString());
+                neoporezivo += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString()),2);
             }
             //ukIznos = ukIznos - neoporezivo;
             label1.Text = "Ukupno: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
@@ -161,21 +153,21 @@ namespace Ura_Porezna
             double osn5 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                osn5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString());
+                osn5 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString()),2);
             }
             label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             double osn13 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                osn13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString());
+                osn13 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString()),2);
             }
             label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             double osn25 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                osn25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString());
+                osn25 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString()),2);
             }
             label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double osnUk = osn5 + osn13 + osn25 + neoporezivo;
@@ -183,19 +175,19 @@ namespace Ura_Porezna
             double por5 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                por5 += Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString());
+                por5 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString()),2);
             }
             label8.Text = "Por.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por13 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                por13 += Convert.ToDouble(dataGridView1.Rows[i].Cells[14].Value.ToString());
+                por13 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[14].Value.ToString()),2);
             }
             label9.Text = "Por.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             double por25 = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                por25 += Convert.ToDouble(dataGridView1.Rows[i].Cells[15].Value.ToString());
+                por25 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[15].Value.ToString()),2);
             }
             label10.Text = "Por.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
             //obilazak gubitka u lipama radi strojnog racunanja
@@ -214,7 +206,7 @@ namespace Ura_Porezna
                                                 new XElement(ns + "U8", Math.Round(osn5, 2)),
                                                 new XElement(ns + "U9", Math.Round(osn13, 2)),
                                                 new XElement(ns + "U10", Math.Round(osn25, 2)),
-                                                new XElement(ns + "U11", Math.Round(ukIznos, 2)),
+                                                new XElement(ns + "U11", Math.Round(osn5+osn13+osn25+pretPorUk, 2)),
                                                 new XElement(ns + "U12", Math.Round(pretPorUk, 2)),
                                                 new XElement(ns + "U13", Math.Round(por5, 2)),
                                                 new XElement(ns + "U14", "0.00"),
