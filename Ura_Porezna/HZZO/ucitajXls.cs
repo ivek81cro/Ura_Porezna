@@ -13,6 +13,9 @@ namespace Ura_Porezna
         {
             ConvertXlsToCsv.Convert(ref put, 0);
 
+            if (put == null)
+                return;
+
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             MySqlConnection con = new MySqlConnection(constring);
             string query = string.Format("INSERT INTO poreznaura.hzzo (datum, dokument, brojRn, " +
