@@ -90,7 +90,7 @@
             this.button3.TabIndex = 12;
             this.button3.Text = "Briši bazu";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button2
             // 
@@ -101,7 +101,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "Otvori dokument za  uvoz podataka";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label7
             // 
@@ -154,7 +154,7 @@
             this.button4.TabIndex = 19;
             this.button4.Text = "Ispis iz baze";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label1
             // 
@@ -264,7 +264,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Iznos za PDV obrazac";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label12
             // 
@@ -416,7 +416,7 @@
             this.button5.TabIndex = 43;
             this.button5.Text = "Filter";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // btnKonsolid
             // 

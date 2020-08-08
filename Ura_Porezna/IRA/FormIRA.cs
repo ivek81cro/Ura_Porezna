@@ -188,7 +188,7 @@ namespace Ura_Porezna
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             OtvoriXls.Otvori(ref put);
@@ -196,13 +196,13 @@ namespace Ura_Porezna
             Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             BrisiBazu();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
@@ -210,12 +210,12 @@ namespace Ura_Porezna
             Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             izracunPDV();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             filterPodataka();
             zbroji();
