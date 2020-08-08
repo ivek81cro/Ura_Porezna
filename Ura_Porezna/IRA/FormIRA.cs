@@ -152,11 +152,11 @@ namespace Ura_Porezna
                 if (citaj.Read())
                 {
                     label1.Text = "Por.Osn.5: " + citaj.GetDouble("osn5").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-                    label15.Text = "Por.5: " + citaj.GetDouble("ppor5").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+                    label15.Text = "Por.5: " + citaj.GetDouble("por5").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label2.Text = "Por.Osn.13: " + citaj.GetDouble("osn13").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-                    label14.Text = "Por.13: " + citaj.GetDouble("ppor13").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+                    label14.Text = "Por.13: " + citaj.GetDouble("por13").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label3.Text = "Por.Osn.25: " + citaj.GetDouble("osn25").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-                    label13.Text = "Por.25: " + citaj.GetDouble("ppor25").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+                    label13.Text = "Por.25: " + citaj.GetDouble("por25").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label4.Text = "Por.Osn.Uk.: " +  citaj.GetDouble("osnPretPorUk").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label20.Text = "Pretpor.Uk.: " + citaj.GetDouble("ukpretpor").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label5.Text = "Pretpor.Osn.0: " + citaj.GetDouble("pporosn0").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
