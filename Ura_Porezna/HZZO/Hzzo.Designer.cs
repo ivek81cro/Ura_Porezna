@@ -48,7 +48,7 @@
             this.btn_ucitaj.TabIndex = 0;
             this.btn_ucitaj.Text = "Učitaj spec.";
             this.btn_ucitaj.UseVisualStyleBackColor = true;
-            this.btn_ucitaj.Click += new System.EventHandler(this.btn_ucitaj_Click);
+            this.btn_ucitaj.Click += new System.EventHandler(this.Btn_ucitaj_Click);
             // 
             // dataGridView1
             // 
@@ -86,7 +86,7 @@
             this.btnIspis.TabIndex = 4;
             this.btnIspis.Text = "Ispis baze";
             this.btnIspis.UseVisualStyleBackColor = true;
-            this.btnIspis.Click += new System.EventHandler(this.btnIspis_Click);
+            this.btnIspis.Click += new System.EventHandler(this.BtnIspis_Click);
             // 
             // label7
             // 
@@ -117,7 +117,7 @@
             this.btnFilter.TabIndex = 19;
             this.btnFilter.Text = "Filtriraj";
             this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.btnFilter.Click += new System.EventHandler(this.BtnFilter_Click);
             // 
             // Hzzo
             // 

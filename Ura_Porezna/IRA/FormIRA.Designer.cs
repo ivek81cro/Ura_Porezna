@@ -426,7 +426,7 @@
             this.btnKonsolid.TabIndex = 44;
             this.btnKonsolid.Text = "Konsolidiraj";
             this.btnKonsolid.UseVisualStyleBackColor = true;
-            this.btnKonsolid.Click += new System.EventHandler(this.btnKonsolid_Click);
+            this.btnKonsolid.Click += new System.EventHandler(this.BtnKonsolid_Click);
             // 
             // FormIRA
             // 

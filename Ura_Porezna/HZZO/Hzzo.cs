@@ -16,14 +16,14 @@ namespace Ura_Porezna
             datumPick.Value = DateTime.Now;
         }
 
-        private void btn_ucitaj_Click(object sender, EventArgs e)
+        private void Btn_ucitaj_Click(object sender, EventArgs e)
         {
             int godina = Int32.Parse(comboGodine.Text);
             UcitajXls citaj = new UcitajXls();
-            citaj.Otvori(godina, dataGridView1);
+            citaj.Otvori(godina);
         }
 
-        private void btnIspis_Click(object sender, EventArgs e)
+        private void BtnIspis_Click(object sender, EventArgs e)
         {
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             string query = string.Format("SELECT * FROM poreznaura.hzzo");
@@ -38,7 +38,7 @@ namespace Ura_Porezna
             }
         }
 
-        private void btnFilter_Click(object sender, EventArgs e)
+        private void BtnFilter_Click(object sender, EventArgs e)
         {
             string constring = "datasource=localhost;port=3306;username=root;password=pass123";
             string query = string.Format("SELECT * FROM poreznaura.hzzo WHERE datum='{0}';", datumPick.Value.ToString("yyyy-MM-dd"));

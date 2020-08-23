@@ -52,11 +52,10 @@ namespace Ura_Porezna
                 string upitBrisi = string.Format("DELETE FROM poreznaura.ira WHERE Rbr<>100000;");
                 MySqlConnection bazaspoj;
                 MySqlCommand bazazapovjed;
-                MySqlDataReader citaj;
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upitBrisi, bazaspoj);
                 bazaspoj.Open();
-                citaj = bazazapovjed.ExecuteReader();
+                bazazapovjed.ExecuteReader();
                 bazaspoj.Close();
             }
             else
@@ -66,7 +65,7 @@ namespace Ura_Porezna
             
         }            
 
-        void zbroji()
+        void Zbroji()
         {
             label12.ResetText(); label13.ResetText(); label14.ResetText(); label15.ResetText(); label20.ResetText();
             label1.ResetText(); label2.ResetText(); label3.ResetText(); label4.ResetText(); label21.ResetText();
@@ -129,13 +128,13 @@ namespace Ura_Porezna
             label11.Text = "Pdv.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
 
-        void filterPodataka()
+        void FilterPodataka()
         {
             Filter filt = new Filter();
             filt.Filtriraj(datumOdBox, datumDoBox, textFilter.Text, dataGridView1);
         }
 
-        void izracunPDV()
+        void IzracunPDV()
         {
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
@@ -206,23 +205,23 @@ namespace Ura_Porezna
         {
             BrisiDatagrid();
             Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
-            zbroji();
+            Zbroji();
             Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            izracunPDV();
+            IzracunPDV();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            filterPodataka();
-            zbroji();
+            FilterPodataka();
+            Zbroji();
             Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
         }
 
-        private void btnKonsolid_Click(object sender, EventArgs e)
+        private void BtnKonsolid_Click(object sender, EventArgs e)
         {
             Konsolidiraj kons = new Konsolidiraj();
             kons.Pokreni();

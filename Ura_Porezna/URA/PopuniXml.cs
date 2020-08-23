@@ -19,8 +19,10 @@ namespace Ura_Porezna
             MySqlDataReader citaj;
 
             string UUID = Guid.NewGuid().ToString();
-            SaveFileDialog savFile = new SaveFileDialog();
-            savFile.Filter = "XML|*.xml";
+            SaveFileDialog savFile = new SaveFileDialog
+            {
+                Filter = "XML|*.xml"
+            };
             if (savFile.ShowDialog() == DialogResult.OK)
             {
                 put = savFile.FileName;                
@@ -34,7 +36,6 @@ namespace Ura_Porezna
                 //-----------------------------------------------STRANICA A-----------------------------------------------------------                
                 XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
                 XNamespace ns2 = "http://e-porezna.porezna-uprava.hr/sheme/Metapodaci/v2-0";
-                XNamespace ns3 = "";
 
                 XDocument xDoc = new XDocument(
 
@@ -81,7 +82,7 @@ namespace Ura_Porezna
                                     new XElement(ns + "Ukupno", null))));
 
                 StringWriter sw = new StringWriter();
-                XmlWriter xWrite = XmlWriter.Create(sw);
+                XmlWriter.Create(sw);
                 //xDoc.Save(xWrite);
                 //xWrite.Close();
                 bazaspoj.Close();
@@ -193,7 +194,6 @@ namespace Ura_Porezna
             //obilazak gubitka u lipama radi strojnog racunanja
             //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
             double pretPorUk = por5 + por13 + por25;
-            double ukupnoSPdv = neoporezivo + osnUk;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
 
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Ura_Porezna
@@ -31,7 +32,7 @@ namespace Ura_Porezna
                     }
                 }
             }
-            label20.Text = "Razlika-HZZO: " + Math.Round(razlika, 2).ToString();
+            label20.Text = "Razlika-HZZO: " + Math.Round(razlika, 2).ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
     }
 }

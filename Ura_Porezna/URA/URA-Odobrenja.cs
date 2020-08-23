@@ -23,7 +23,7 @@ namespace Ura_Porezna
                     dataGridView1.DataSource = ds.Tables[0];
                 }
             }
-            zbrojiOdobrenjaZbirno();
+            ZbrojiOdobrenjaZbirno();
         }
         public void OdobrenjaPojedinacno()
         {
@@ -46,7 +46,7 @@ namespace Ura_Porezna
                     Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
                 }
             }
-            zbrojiOdobrenja();
+            ZbrojiOdobrenja();
         }
         public void OdobrenjaPojFilter()
         {
@@ -70,9 +70,9 @@ namespace Ura_Porezna
                     Myrow.DefaultCellStyle.BackColor = Color.MistyRose;
                 }
             }
-            zbrojiOdobrenja();
+            ZbrojiOdobrenja();
         }
-        void zbrojiOdobrenja()
+        void ZbrojiOdobrenja()
         {
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -133,7 +133,7 @@ namespace Ura_Porezna
             double pretPorUk = por5 + por13 + por25;
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
-        void zbrojiOdobrenjaZbirno()
+        void ZbrojiOdobrenjaZbirno()
         {
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)

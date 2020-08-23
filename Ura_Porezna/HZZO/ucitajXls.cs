@@ -9,7 +9,7 @@ namespace Ura_Porezna
     class UcitajXls
     {
         string put;
-        public void Otvori(int godina, CustomDataGridView dataGridView1)
+        public void Otvori(int godina)
         {
             ConvertXlsToCsv.Convert(ref put, 0);
 

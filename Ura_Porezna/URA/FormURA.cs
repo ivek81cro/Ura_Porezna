@@ -51,11 +51,10 @@ namespace Ura_Porezna
                 string upitBrisi = "DELETE FROM poreznaura.ura WHERE Rbr<>100000;";
                 MySqlConnection bazaspoj;
                 MySqlCommand bazazapovjed;
-                MySqlDataReader citaj;
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upitBrisi, bazaspoj);
                 bazaspoj.Open();
-                citaj = bazazapovjed.ExecuteReader();
+                bazazapovjed.ExecuteReader();
                 bazaspoj.Close();
             }
             else
@@ -63,7 +62,7 @@ namespace Ura_Porezna
                 return;
             }
         }
-        void zbroji()
+        void Zbroji()
         {
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -124,7 +123,7 @@ namespace Ura_Porezna
             label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
         }
         //kreiraj xml
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
 
@@ -133,7 +132,7 @@ namespace Ura_Porezna
                 xmlPopuna.PopuniUkupno(datumOdBox, datumDoBox);
         }
         //otvori csv
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             UpisCsvURABaza upis = new UpisCsvURABaza();
@@ -144,28 +143,28 @@ namespace Ura_Porezna
             ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
         }
         //brisi bazu
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             BrisiBazu();
         }
         //ispis iz baze
-        private void button4_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
 
             URAIspPodIzBaze ispis = new URAIspPodIzBaze();
 
             ispis.ispis(datumOdBox,datumDoBox,dataGridView1);
-            zbroji();
+            Zbroji();
         }
         //odobrenja zbirno
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();           
             OdobrenjaZbirno();
         }
         //odobrenja pojedinacno
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
             OdobrenjaPojFilter();
@@ -173,7 +172,7 @@ namespace Ura_Porezna
             //odobrenja.zbrojiOdobrenja(dataGridView1);
         }
         //troskovi
-        private void button7_Click(object sender, EventArgs e)
+        private void Button7_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();            
             Troškovi();
