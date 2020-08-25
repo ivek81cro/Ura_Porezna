@@ -21,11 +21,10 @@ namespace Ura_Porezna
             dt.Load(cmd.ExecuteReader());
             var rows = dt.AsEnumerable().ToArray();
             int zadnjiRed=0;
-            int godina=0;
             try
             {
                 zadnjiRed = Convert.ToInt32(rows[0]["Rbr"]) == 0 ? -1 : Convert.ToInt32(rows[0]["Rbr"]);
-                godina = Convert.ToInt32(rows[0]["Datum_racuna"].ToString().Substring(0, 4));
+                int godina = Convert.ToInt32(rows[0]["Datum_racuna"].ToString().Substring(0, 4));
             }
             catch
             {

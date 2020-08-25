@@ -8,7 +8,7 @@ namespace Ura_Porezna
 {
     class URAIspPodIzBaze
     {
-        public void ispis(string datumOdBox, string datumDoBox, DataGridView dataGridView1)
+        public void Ispis(string datumOdBox, string datumDoBox, DataGridView dataGridView1)
         {
             string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
             string query = string.Format("SELECT * FROM poreznaura.ura WHERE Datum_racuna BETWEEN "+

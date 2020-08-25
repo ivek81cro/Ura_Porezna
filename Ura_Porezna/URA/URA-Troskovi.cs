@@ -17,14 +17,14 @@ namespace Ura_Porezna
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
                 {
                     DataSet ds = new DataSet();
-                    adapter.Fill(ds);
+                    _ = adapter.Fill(ds);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
             }
-            zbrojiTroskove();
+            ZbrojiTroskove();
         }
 
-        void zbrojiTroskove()
+        void ZbrojiTroskove()
         {
             double ukIznos = 0.00;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)

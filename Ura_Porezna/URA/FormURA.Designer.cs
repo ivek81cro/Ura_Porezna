@@ -54,6 +54,7 @@
             this.txtDob = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.datumOd = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -296,9 +297,19 @@
             this.datumOd.TabIndex = 1;
             this.datumOd.Value = new System.DateTime(2019, 2, 13, 21, 5, 21, 0);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(453, 152);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(10, 13);
+            this.label13.TabIndex = 27;
+            this.label13.Text = ".";
+            // 
             // FormURA
             // 
             this.ClientSize = new System.Drawing.Size(902, 557);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtDob);
             this.Controls.Add(this.button7);
@@ -361,6 +372,7 @@
         protected System.Windows.Forms.TextBox txtDob;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker datumOd;
+        protected System.Windows.Forms.Label label13;
     }
 }
 

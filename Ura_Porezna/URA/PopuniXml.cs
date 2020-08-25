@@ -1,14 +1,13 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 
 namespace Ura_Porezna
-{
-    class PopuniXml : FormURA
+{    
+    class PopuniXml
     {
         public bool PopuniObrazac(string datumOdBox, string datumDoBox)
         {
@@ -25,7 +24,7 @@ namespace Ura_Porezna
             };
             if (savFile.ShowDialog() == DialogResult.OK)
             {
-                put = savFile.FileName;                
+                put = savFile.FileName;
                 upit = "SELECT * FROM poreznaura.obveznik;";
                 bazaspoj = new MySqlConnection(constring);
                 bazazapovjed = new MySqlCommand(upit, bazaspoj);
@@ -102,6 +101,7 @@ namespace Ura_Porezna
                 {
                     double iznosSporezom = Math.Round(Convert.ToDouble(citaj["Porezna_osn5"]) + Convert.ToDouble(citaj["Porezna_osn13"]) +
                         Convert.ToDouble(citaj["Porezna_osn25"]) + Convert.ToDouble(citaj["Ukupni_pretporez"]), 2);
+
                     doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Racuni").Add(new XElement(ns + "R",
                                                         new XElement(ns + "R1", citaj["Rbr"].ToString()),
                                                         new XElement(ns + "R2", citaj["Broj_racuna"].ToString()),
@@ -131,92 +131,28 @@ namespace Ura_Porezna
                 return false;
             }
         }
-        public void PopuniUkupno(string datumOdBox, string datumDoBox)
+        public void PopuniUkupno(UraStavka s)
         {
-            URAIspPodIzBaze ispis = new URAIspPodIzBaze();
-
-            ispis.ispis(datumOdBox, datumDoBox, dataGridView1);
-
-            double ukIznos = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                ukIznos += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[7].Value.ToString()),2);
-            }
-            
-            double neoporezivo = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                neoporezivo += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[8].Value.ToString()),2);
-            }
-            //ukIznos = ukIznos - neoporezivo;
-            label1.Text = "Ukupno: " + ukIznos.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-
-            double osn5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn5 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[9].Value.ToString()),2);
-            }
-            label2.Text = "Osn.5%: " + osn5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-
-            double osn13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn13 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[10].Value.ToString()),2);
-            }
-            label3.Text = "Osn.13%: " + osn13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-
-            double osn25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                osn25 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[11].Value.ToString()),2);
-            }
-            label4.Text = "Osn.25%: " + osn25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double osnUk = osn5 + osn13 + osn25 + neoporezivo;
-            label5.Text = "Osn.Uk: " + osnUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por5 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por5 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[13].Value.ToString()),2);
-            }
-            label8.Text = "Por.5%: " + por5.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por13 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por13 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[14].Value.ToString()),2);
-            }
-            label9.Text = "Por.13%: " + por13.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            double por25 = 0.00;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                por25 += Math.Round(Convert.ToDouble(dataGridView1.Rows[i].Cells[15].Value.ToString()),2);
-            }
-            label10.Text = "Por.25%: " + por25.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-            //obilazak gubitka u lipama radi strojnog racunanja
-            //ukIznos = osn5 + osn13 + osn25 + por5 + por13 + por25;
-            double pretPorUk = por5 + por13 + por25;
-            label11.Text = "Pretpor.Uk.: " + pretPorUk.ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-
             XNamespace ns = "http://e-porezna.porezna-uprava.hr/sheme/zahtjevi/ObrazacURA/v1-0";
-            XNamespace ns2 = "http://e-porezna.porezna-uprava.hr/sheme/Metapodaci/v2-0";
 
             XDocument doc = XDocument.Load(put);
 
-
             doc.Element(ns + "ObrazacURA").Element(ns + "Tijelo").Element(ns + "Ukupno").Add(
-                                                new XElement(ns + "U8", Math.Round(osn5, 2)),
-                                                new XElement(ns + "U9", Math.Round(osn13, 2)),
-                                                new XElement(ns + "U10", Math.Round(osn25, 2)),
-                                                new XElement(ns + "U11", Math.Round(osn5+osn13+osn25+pretPorUk, 2)),
-                                                new XElement(ns + "U12", Math.Round(pretPorUk, 2)),
-                                                new XElement(ns + "U13", Math.Round(por5, 2)),
+                                                new XElement(ns + "U8", Math.Round(s.Osn5, 2)),
+                                                new XElement(ns + "U9", Math.Round(s.Osn13, 2)),
+                                                new XElement(ns + "U10", Math.Round(s.Osn25, 2)),
+                                                new XElement(ns + "U11", Math.Round(s.Osn5 + s.Osn13 + s.Osn25 + s.PretPorUk, 2)),
+                                                new XElement(ns + "U12", Math.Round(s.PretPorUk, 2)),
+                                                new XElement(ns + "U13", Math.Round(s.Por5, 2)),
                                                 new XElement(ns + "U14", "0.00"),
-                                                new XElement(ns + "U15", Math.Round(por13, 2)),
+                                                new XElement(ns + "U15", Math.Round(s.Por13, 2)),
                                                 new XElement(ns + "U16", "0.00"),
-                                                new XElement(ns + "U17", Math.Round(por25, 2)),
+                                                new XElement(ns + "U17", Math.Round(s.Por25, 2)),
                                                 new XElement(ns + "U18", "0.00"));
-
 
             doc.Save(put);
         }
+
+        private string put = null;
     }
 }
