@@ -7,7 +7,7 @@ namespace Ura_Porezna
 {
     class Oboji_Razlika_Hzzo
     {
-        public static void ObojiRedove(ref CustomDataGridView dataGridView1, ref Label label20)
+        public static void ObojiRedove(CustomDataGridView dataGridView1, Label label20)
         {
             double razlika = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)

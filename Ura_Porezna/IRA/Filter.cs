@@ -1,24 +1,21 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Ura_Porezna
 {
     class Filter
     {
-        public void Filtriraj(string datumOdBox, string datumDoBox, string textFilter, CustomDataGridView dataGridView1)
+        public void Filtriraj(string textFilter, CustomDataGridView dataGridView1, int column)
         {
-            string connStr = "datasource=localhost;port=3306;username=root;password=pass123";
-            string query = string.Format("SELECT * FROM poreznaura.ira WHERE datum_rn BETWEEN " +
-                "'{0}' AND '{1}' AND kupac like '%{2}%'; ", datumOdBox, datumDoBox, textFilter);
-
-            using (MySqlConnection conn = new MySqlConnection(connStr))
+            if (dataGridView1.Rows.Count != 0)
             {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn))
+                BindingSource bs = new BindingSource
                 {
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds);
-                    dataGridView1.DataSource = ds.Tables[0];
-                }
+                    DataSource = dataGridView1.DataSource,
+                    Filter = dataGridView1.Columns[column].HeaderText.ToString() + " LIKE '%" + textFilter + "%'"
+                };
+                dataGridView1.DataSource = bs;
             }
         }
     }

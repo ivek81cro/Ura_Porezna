@@ -12,6 +12,7 @@ namespace Ura_Porezna
         public double Osn5 { get; set; }
         public double Osn13 { get; set; }
         public double Osn25 { get; set; }
+        public double OsnovicaUkupno { get; set; }
         public double Neoporezivo { get; set; }
         public double Por5 { get; set; }
         public double Por13 { get; set; }

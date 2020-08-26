@@ -20,6 +20,7 @@ namespace Ura_Porezna
             var dt = new DataTable();
             dt.Load(cmd.ExecuteReader());
             var rows = dt.AsEnumerable().ToArray();
+
             int zadnjiRed=0;
             try
             {
@@ -30,10 +31,11 @@ namespace Ura_Porezna
             {
 
             }
+
             Poruka p = new Poruka();
             p.Prikazi();
 
-            ConvertXlsToCsv.Convert(ref put, zadnjiRed);
+            ConvertXlsToCsv.Convert(ref put);
 
             if (put == null) return;
 

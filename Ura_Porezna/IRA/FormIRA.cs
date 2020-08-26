@@ -12,7 +12,7 @@ namespace Ura_Porezna
         string datumOdBox;
         string datumDoBox;
         public FormIRA()
-        {            
+        {
             InitializeComponent();
             var datumPocetni = DateTime.Now.AddMonths(-1);
             datumOd.Value = new DateTime(datumPocetni.Year, datumPocetni.Month, 1);
@@ -32,8 +32,6 @@ namespace Ura_Porezna
         {
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
         }
-
-        string put;
 
         void BrisiDatagrid()
         {
@@ -62,8 +60,8 @@ namespace Ura_Porezna
             {
                 return;
             }
-            
-        }            
+
+        }
 
         void Zbroji()
         {
@@ -131,7 +129,7 @@ namespace Ura_Porezna
         void FilterPodataka()
         {
             Filter filt = new Filter();
-            filt.Filtriraj(datumOdBox, datumDoBox, textFilter.Text, dataGridView1);
+            filt.Filtriraj(textFilter.Text, dataGridView1, 3);
         }
 
         void IzracunPDV()
@@ -139,7 +137,7 @@ namespace Ura_Porezna
             datumOdBox = datumOd.Value.ToString("yyyy-MM-dd");
             datumDoBox = datumDo.Value.ToString("yyyy-MM-dd");
             string constring = "datasource=localhost;port=3306;database=poreznaura;username=root;" +
-                "password=pass123;Allow User Variables=True";            
+                "password=pass123;Allow User Variables=True";
             string upit = string.Format("CALL porez('{0}','{1}');", datumOdBox, datumDoBox);
             MySqlConnection bazaspoj = new MySqlConnection(constring);
             MySqlCommand bazazapovjed = new MySqlCommand(upit, bazaspoj);
@@ -156,7 +154,7 @@ namespace Ura_Porezna
                     label14.Text = "Por.13: " + citaj.GetDouble("por13").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label3.Text = "Por.Osn.25: " + citaj.GetDouble("osn25").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label13.Text = "Por.25: " + citaj.GetDouble("por25").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
-                    label4.Text = "Por.Osn.Uk.: " +  citaj.GetDouble("osnPretPorUk").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
+                    label4.Text = "Por.Osn.Uk.: " + citaj.GetDouble("osnPretPorUk").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label20.Text = "Pretpor.Uk.: " + citaj.GetDouble("ukpretpor").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label5.Text = "Pretpor.Osn.0: " + citaj.GetDouble("pporosn0").ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
                     label19.Text = "Pretpor.0: " + (0.00).ToString("C", CultureInfo.CreateSpecificCulture("hr-HR"));
@@ -192,7 +190,7 @@ namespace Ura_Porezna
             BrisiDatagrid();
             OtvoriXls.Otvori(ref put);
             Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
-            Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
+            Oboji_Razlika_Hzzo.ObojiRedove(dataGridView1, label20);
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -206,7 +204,7 @@ namespace Ura_Porezna
             BrisiDatagrid();
             Ispis.Ispisi(datumOdBox, datumDoBox, dataGridView1);
             Zbroji();
-            Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
+            Oboji_Razlika_Hzzo.ObojiRedove(dataGridView1, label20);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -214,17 +212,19 @@ namespace Ura_Porezna
             IzracunPDV();
         }
 
-        private void Button5_Click(object sender, EventArgs e)
-        {
-            FilterPodataka();
-            Zbroji();
-            Oboji_Razlika_Hzzo.ObojiRedove(ref dataGridView1, ref label20);
-        }
-
         private void BtnKonsolid_Click(object sender, EventArgs e)
         {
             Konsolidiraj kons = new Konsolidiraj();
             kons.Pokreni();
         }
+
+        private void TextFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            FilterPodataka();
+            Zbroji();
+            Oboji_Razlika_Hzzo.ObojiRedove(dataGridView1, label20);
+        }
+
+        string put;
     }
 }

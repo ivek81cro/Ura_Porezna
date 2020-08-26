@@ -11,7 +11,7 @@ namespace Ura_Porezna
         string put;
         public void Otvori(int godina)
         {
-            ConvertXlsToCsv.Convert(ref put, 0);
+            ConvertXlsToCsv.Convert(ref put);
 
             if (put == null)
                 return;

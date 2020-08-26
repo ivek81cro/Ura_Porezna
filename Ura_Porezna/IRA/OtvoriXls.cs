@@ -20,12 +20,21 @@ namespace Ura_Porezna
 
             MySqlCommand cmd = new MySqlCommand(query, con);
             Object result = cmd.ExecuteScalar();
-            int zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result);
+
+            int zadnjiRed = 0;
+            try
+            { 
+                zadnjiRed = Convert.ToInt32(result) == 0 ? -1 : Convert.ToInt32(result); 
+            }
+            catch
+            {
+
+            }
 
             Poruka p = new Poruka();
             p.Prikazi();
 
-            ConvertXlsToCsv.Convert(ref put, zadnjiRed); 
+            ConvertXlsToCsv.Convert(ref put); 
             
             if (put == null) return;
 

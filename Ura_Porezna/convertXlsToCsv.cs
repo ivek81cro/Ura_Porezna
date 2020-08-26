@@ -8,12 +8,14 @@ namespace Ura_Porezna
 {
     class ConvertXlsToCsv
     {
-        public static void Convert(ref string put, int zadnjiRed)
+        public static void Convert(ref string put)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "Xlsx Files *.xlsx|*.xlsx|Xls Files *.xls|*.xls|Csv files *.csv|*.csv";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
+            OpenFileDialog choofdlog = new OpenFileDialog
+            {
+                Filter = "Xlsx Files *.xlsx|*.xlsx|Xls Files *.xls|*.xls|Csv files *.csv|*.csv",
+                FilterIndex = 1,
+                Multiselect = false
+            };
 
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
