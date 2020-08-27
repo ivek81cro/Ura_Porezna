@@ -8,15 +8,12 @@ namespace Ura_Porezna
     {
         public void Filtriraj(string textFilter, CustomDataGridView dataGridView1, int column)
         {
-            if (dataGridView1.Rows.Count != 0 && dataGridView1.Columns[3].Name == "kupac")
+            BindingSource bs = new BindingSource
             {
-                BindingSource bs = new BindingSource
-                {
-                    DataSource = dataGridView1.DataSource,
-                    Filter = dataGridView1.Columns[column].HeaderText.ToString() + " LIKE '%" + textFilter + "%'"
-                };
-                dataGridView1.DataSource = bs;
-            }
+                DataSource = dataGridView1.DataSource,
+                Filter = dataGridView1.Columns[column].HeaderText.ToString() + " LIKE '%" + textFilter + "%'"
+            };
+            dataGridView1.DataSource = bs;
         }
     }
 }

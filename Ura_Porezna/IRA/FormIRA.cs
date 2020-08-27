@@ -39,6 +39,7 @@ namespace Ura_Porezna
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
+            textFilter.Clear();
         }
 
         void BrisiBazu()
@@ -220,9 +221,12 @@ namespace Ura_Porezna
 
         private void TextFilter_KeyUp(object sender, KeyEventArgs e)
         {
-            FilterPodataka();
-            Zbroji();
-            Oboji_Razlika_Hzzo.ObojiRedove(dataGridView1, label20);
+            if (dataGridView1.Rows.Count != 0 && dataGridView1.Columns[3].Name == "kupac")
+            {
+                FilterPodataka();
+                Zbroji();
+                Oboji_Razlika_Hzzo.ObojiRedove(dataGridView1, label20);
+            }
         }
 
         string put;

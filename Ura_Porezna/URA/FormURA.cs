@@ -41,6 +41,7 @@ namespace Ura_Porezna
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
             dataGridView1.Refresh();
+            txtDob.Clear();
         }
         void BrisiBazu()
         {
@@ -146,7 +147,9 @@ namespace Ura_Porezna
         private void Button7_Click(object sender, EventArgs e)
         {
             BrisiDatagrid();
-            Troškovi();
+            Troskovi tr = new Troskovi();
+            UraStavka stavka = tr.Troškovi(dataGridView1, datumOdBox, datumDoBox);
+            PopuniLabeleZbroja(stavka);
 
             foreach (DataGridViewRow Myrow in dataGridView1.Rows)
             {
@@ -159,18 +162,20 @@ namespace Ura_Porezna
         //Filter za odobrenja po nazivu dobavljača
         private void TxtDob_KeyUp(object sender, KeyEventArgs e)
         {
-            int row = 0;
+            int column = 0;
             Odobrenja od = new Odobrenja();
+            Filter filter = new Filter();
 
-            if (dataGridView1.Rows.Count != 0 && e.KeyCode != Keys.Back)
+            if (dataGridView1.Rows.Count != 0)
             {
-                if (dataGridView1.Columns[0].Name.ToString() != "Naziv_dobavljaca")
-                    row = 4;
+                if (dataGridView1.Columns[4].Name == "Naziv_dobavljaca")
+                    column = 4;
+                if (dataGridView1.Columns[2].Name == "Naziv_dobavljaca")
+                    column = 2;
 
-                Filter filter = new Filter();
-                filter.Filtriraj(txtDob.Text, dataGridView1, row);
+                filter.Filtriraj(txtDob.Text, dataGridView1, column);
 
-                if (row == 4)
+                if (column == 4)
                 {
                     foreach (DataGridViewRow Myrow in dataGridView1.Rows)
                     {            //Here 2 cell is target value and 1 cell is Volume
@@ -182,7 +187,7 @@ namespace Ura_Porezna
                     PopuniLabeleZbroja(od.ZbrojiOdobrenja(dataGridView1));
                 }
 
-                if (row == 0)
+                if (column == 0)
                     PopuniLabeleZbroja(od.ZbrojiOdobrenjaZbirno(dataGridView1));
             }
         }
