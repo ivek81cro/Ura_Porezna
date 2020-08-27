@@ -107,8 +107,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backup\Backup.cs" />
-    <Compile Include="convertXlsToCsv.cs" />
+    <Compile Include="Model\Backup\Backup.cs" />
+    <Compile Include="Model\Converter\convertXlsToCsv.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -117,65 +117,65 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form0.cs">
+    <Compile Include="GUI\Form0.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form0.Designer.cs">
+    <Compile Include="GUI\Form0.Designer.cs">
       <DependentUpon>Form0.cs</DependentUpon>
     </Compile>
-    <Compile Include="HZZO\Hzzo.cs">
+    <Compile Include="GUI\Hzzo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HZZO\Hzzo.Designer.cs">
+    <Compile Include="GUI\Hzzo.Designer.cs">
       <DependentUpon>Hzzo.cs</DependentUpon>
     </Compile>
-    <Compile Include="HZZO\ucitajXls.cs" />
-    <Compile Include="IRA\Filter.cs" />
-    <Compile Include="IRA\Ispis.cs" />
-    <Compile Include="IRA\Konsolidiraj.cs" />
-    <Compile Include="IRA\Oboji_Razlika_Hzzo.cs" />
-    <Compile Include="IRA\OtvoriXls.cs" />
-    <Compile Include="URA\CustomDataGridView.cs">
+    <Compile Include="Model\HZZO\ucitajXls.cs" />
+    <Compile Include="Model\IRA\Filter.cs" />
+    <Compile Include="Model\IRA\Ispis.cs" />
+    <Compile Include="Model\IRA\Konsolidiraj.cs" />
+    <Compile Include="Model\IRA\Oboji_Razlika_Hzzo.cs" />
+    <Compile Include="Model\IRA\OtvoriXls.cs" />
+    <Compile Include="Model\URA\CustomDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="URA\FormURA.cs">
+    <Compile Include="GUI\FormURA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="URA\FormURA.Designer.cs">
+    <Compile Include="GUI\FormURA.Designer.cs">
       <DependentUpon>FormURA.cs</DependentUpon>
     </Compile>
-    <Compile Include="IRA\FormIRA.cs">
+    <Compile Include="GUI\FormIRA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IRA\FormIRA.Designer.cs">
+    <Compile Include="GUI\FormIRA.Designer.cs">
       <DependentUpon>FormIRA.cs</DependentUpon>
     </Compile>
-    <Compile Include="URA\Odobrenja.cs" />
-    <Compile Include="URA\PopuniXml.cs" />
-    <Compile Include="URA\Troskovi.cs" />
-    <Compile Include="URA\URA-IspPodIzBaze.cs" />
-    <Compile Include="Poruka.cs">
+    <Compile Include="Model\URA\Odobrenja.cs" />
+    <Compile Include="Model\URA\PopuniXml.cs" />
+    <Compile Include="Model\URA\Troskovi.cs" />
+    <Compile Include="Model\URA\URA-IspPodIzBaze.cs" />
+    <Compile Include="GUI\Poruka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Poruka.Designer.cs">
+    <Compile Include="GUI\Poruka.Designer.cs">
       <DependentUpon>Poruka.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="URA\URA-upisCsv-Baza.cs" />
-    <Compile Include="URA\UraStavka.cs" />
-    <EmbeddedResource Include="Form0.resx">
+    <Compile Include="Model\URA\URA-upisCsv-Baza.cs" />
+    <Compile Include="Model\URA\UraStavka.cs" />
+    <EmbeddedResource Include="GUI\Form0.resx">
       <DependentUpon>Form0.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HZZO\Hzzo.resx">
+    <EmbeddedResource Include="GUI\Hzzo.resx">
       <DependentUpon>Hzzo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="URA\FormURA.resx">
+    <EmbeddedResource Include="GUI\FormURA.resx">
       <DependentUpon>FormURA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IRA\FormIRA.resx">
+    <EmbeddedResource Include="GUI\FormIRA.resx">
       <DependentUpon>FormIRA.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Poruka.resx">
+    <EmbeddedResource Include="GUI\Poruka.resx">
       <DependentUpon>Poruka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
