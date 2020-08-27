@@ -162,7 +162,7 @@ namespace Ura_Porezna
             int row = 0;
             Odobrenja od = new Odobrenja();
 
-            if (dataGridView1.Rows.Count != 0)
+            if (dataGridView1.Rows.Count != 0 && e.KeyCode != Keys.Back)
             {
                 if (dataGridView1.Columns[0].Name.ToString() != "Naziv_dobavljaca")
                     row = 4;
