@@ -8,7 +8,7 @@ namespace Ura_Porezna
     {
         public void Filtriraj(string textFilter, CustomDataGridView dataGridView1, int column)
         {
-            if (dataGridView1.Rows.Count != 0)
+            if (dataGridView1.Rows.Count != 0 && dataGridView1.Columns[3].Name == "kupac")
             {
                 BindingSource bs = new BindingSource
                 {
