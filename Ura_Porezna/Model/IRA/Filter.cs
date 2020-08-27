@@ -1,6 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System.Data;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Ura_Porezna
 {

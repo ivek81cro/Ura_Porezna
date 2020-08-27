@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
