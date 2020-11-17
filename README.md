@@ -1,4 +1,5 @@
 # Ura_Porezna
 
-Citanje potrebnih podataka predefinirane export .csv datoteke iz knjige  ura i formiranje xml dokumenta za slanje u pu.
+čitanje potrebnih podataka predefinirane export .csv datoteke iz knjige  ura i formiranje xml dokumenta za slanje u pu.
+Rađeno zaa osobnu uporabu
 Nezgrapno ali funkcionalno
