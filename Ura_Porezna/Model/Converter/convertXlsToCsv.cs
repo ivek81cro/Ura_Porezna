@@ -53,7 +53,7 @@ namespace Ura_Porezna
             {
                 for (int i = 0; i < result.Tables[ind].Columns.Count; i++)
                 {
-                    csvData += result.Tables[ind].Rows[row_no][i].ToString() + ";";
+                    csvData += result.Tables[ind].Rows[row_no][i].ToString().Replace('\n',' ') + ";";
                 }
                 row_no++;
                 csvData += "\n";
